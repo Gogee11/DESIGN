@@ -1,0 +1,11 @@
+2026-03-13 14:12:13,921 - {'optimizer': {'name': 'adam', 'lr': 0.001, 'weight_decay': 0}, 'train': {'epoch': 3000, 'batch_size': 4096, 'save_model': True, 'loss': 'pairwise', 'test_step': 3, 'reproducible': True, 'seed': 2025, 'patience': 5}, 'test': {'metrics': ['recall', 'ndcg'], 'k': [5, 10, 20], 'batch_size': 1024}, 'data': {'type': 'general_cf', 'name': 'amazon', 'user_num': 140, 'item_num': 641}, 'model': {'name': 'lightgcn', 'keep_rate': 0.8, 'embedding_size': 32, 'layer_num': 2, 'reg_weight': 1e-06, 'amazon': {'layer_num': 3, 'reg_weight': 1e-06}, 'yelp': {'layer_num': 3, 'reg_weight': 1e-06}, 'steam': {'layer_num': 2, 'reg_weight': 1e-06}, 'movie': {'layer_num': 3, 'reg_weight': 1e-06}}}
+2026-03-13 14:12:17,578 - Epoch 0  [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0909 ] [ndcg@5: 0.0000 ndcg@10: 0.0091 ndcg@20: 0.0240 ] 
+2026-03-13 14:12:17,633 - Epoch 3  [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0606 ] [ndcg@5: 0.0000 ndcg@10: 0.0088 ndcg@20: 0.0167 ] 
+2026-03-13 14:12:17,683 - Epoch 6  [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0606 ] [ndcg@5: 0.0000 ndcg@10: 0.0088 ndcg@20: 0.0169 ] 
+2026-03-13 14:12:17,741 - Epoch 9  [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0606 ] [ndcg@5: 0.0000 ndcg@10: 0.0088 ndcg@20: 0.0169 ] 
+2026-03-13 14:12:17,792 - Epoch 12  [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0606 ] [ndcg@5: 0.0000 ndcg@10: 0.0088 ndcg@20: 0.0167 ] 
+2026-03-13 14:12:17,843 - Epoch 15  [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0606 ] [ndcg@5: 0.0000 ndcg@10: 0.0088 ndcg@20: 0.0167 ] 
+2026-03-13 14:12:17,854 - [recall@5: 0.0000 recall@10: 0.0303 recall@20: 0.0909 ] [ndcg@5: 0.0000 ndcg@10: 0.0091 ndcg@20: 0.0240 ] 
+2026-03-13 14:12:17,872 - [recall@5: 0.0667 recall@10: 0.0778 recall@20: 0.1222 ] [ndcg@5: 0.0466 ndcg@10: 0.0505 ndcg@20: 0.0617 ] 
+2026-03-13 14:12:17,877 - Save model parameters to ./checkpoint/lightgcn/lightgcn-amazon-2025.pth
+2026-03-13 14:12:17,878 - Best Epoch 0. Final test result: {'recall': array([0.06666667, 0.07777778, 0.12222222]), 'ndcg': array([0.04658373, 0.05054159, 0.06171545])}.

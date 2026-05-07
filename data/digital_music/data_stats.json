@@ -1,0 +1,14 @@
+{
+  "num_users": 5541,
+  "num_items": 3568,
+  "total_lines": 64706,
+  "valid_interactions": 64706,
+  "trn_interactions": 37045,
+  "val_interactions": 12707,
+  "tst_interactions": 14954,
+  "src_file": "D:/design/LLM-ARG/data/digital_music/Digital_Music_5.json",
+  "min_rating": 1.0,
+  "train_ratio": 0.6,
+  "val_ratio": 0.2,
+  "seed": 2025
+}
