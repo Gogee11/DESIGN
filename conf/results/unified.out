@@ -1,0 +1,57 @@
+[unified] 20:14:45 total cells: 14
+[unified] 20:14:45 [slot 0/cuda 0] start cell #0 model=lightgcn_agr_conf tag=m1_conf_w0.1_t0.7 args=--conf_weight 0.1 --conf_target 0.7
+[unified] 20:14:45 [slot 2/cuda 1] start cell #1 model=lightgcn_agr_conf tag=m1_conf_w0.5_t0.7 args=--conf_weight 0.5 --conf_target 0.7
+[unified] 20:14:45 [slot 5/cuda 2] start cell #2 model=lightgcn_agr_conf tag=m1_conf_w2.0_t0.7 args=--conf_weight 2.0 --conf_target 0.7
+[unified] 20:14:45 [slot 4/cuda 2] start cell #3 model=lightgcn_agr_conf tag=m1_conf_w0.5_t0.55 args=--conf_weight 0.5 --conf_target 0.55
+[unified] 20:14:45 [slot 7/cuda 3] start cell #4 model=lightgcn_agr_conf tag=m1_conf_w5.0_t0.6 args=--conf_weight 5.0 --conf_target 0.6
+[unified] 20:14:45 [slot 6/cuda 3] start cell #5 model=lightgcn_agr tag=m3_emb16_b0s0 args=--embedding_size 16 --beta 0.0 --str_weight 0.0
+[unified] 20:14:45 [slot 1/cuda 0] start cell #6 model=lightgcn_agr tag=m3_emb8_b0s0 args=--embedding_size 8 --beta 0.0 --str_weight 0.0
+[unified] 20:14:45 [slot 3/cuda 1] start cell #7 model=lightgcn_agr tag=m3_emb16_default args= --embedding_size 16
+[unified] 21:09:49 [slot 7] DONE #4 m1_conf_w5.0_t0.6
+[unified] 21:09:49 [slot 7/cuda 3] start cell #8 model=lightgcn_agr tag=m3_emb8_default args= --embedding_size 8
+[unified] 21:24:03 [slot 1] DONE #6 m3_emb8_b0s0
+[unified] 21:24:03 [slot 1/cuda 0] start cell #9 model=lightgcn_agr_adv tag=m4_adv0.05 args=--adv_weight 0.05 --adv_lambda 1.0
+[unified] 21:25:32 [slot 6] DONE #5 m3_emb16_b0s0
+[unified] 21:25:33 [slot 6/cuda 3] start cell #10 model=lightgcn_agr_adv tag=m4_adv0.2 args=--adv_weight 0.2 --adv_lambda 1.0
+[unified] 21:25:49 [slot 3] DONE #7 m3_emb16_default
+[unified] 21:25:49 [slot 3/cuda 1] start cell #11 model=lightgcn_agr_adv tag=m4_adv1.0 args=--adv_weight 1.0 --adv_lambda 1.0
+[unified] 21:37:37 [slot 6] DONE #10 m4_adv0.2
+[unified] 21:37:37 [slot 6/cuda 3] start cell #12 model=lightgcn_agr_adv tag=m4_adv3.0 args=--adv_weight 3.0 --adv_lambda 1.0
+[unified] 21:38:01 [slot 3] DONE #11 m4_adv1.0
+[unified] 21:38:01 [slot 3/cuda 1] start cell #13 model=lightgcn_agr_adv tag=m4_adv1.0_lam2 args=--adv_weight 1.0 --adv_lambda 2.0
+[unified] 21:49:36 [slot 6] DONE #12 m4_adv3.0
+[unified] [slot 6] queue empty; exiting
+[unified] 21:50:15 [slot 3] DONE #13 m4_adv1.0_lam2
+[unified] [slot 3] queue empty; exiting
+[unified] 22:01:37 [slot 5] DONE #2 m1_conf_w2.0_t0.7
+[unified] [slot 5] queue empty; exiting
+[unified] 22:02:35 [slot 0] DONE #0 m1_conf_w0.1_t0.7
+[unified] [slot 0] queue empty; exiting
+[unified] 22:03:23 [slot 2] DONE #1 m1_conf_w0.5_t0.7
+[unified] [slot 2] queue empty; exiting
+[unified] 22:06:06 [slot 4] DONE #3 m1_conf_w0.5_t0.55
+[unified] [slot 4] queue empty; exiting
+[unified] 22:20:23 [slot 7] DONE #8 m3_emb8_default
+[unified] [slot 7] queue empty; exiting
+[unified] 22:20:56 [slot 1] DONE #9 m4_adv0.05
+[unified] [slot 1] queue empty; exiting
+[unified] 22:20:56 ALL DONE
+14 results/phase8_methods.jsonl
+[unified-m2] 22:20:56 running degree-balanced MIA on existing ckpts
+Risk: High privacy leakage risk
+
+Appended metrics to results/phase8_m2_balanced_mia.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase8_m2_balanced_mia.jsonl
+Risk: High privacy leakage risk
+
+Appended metrics to results/phase8_m2_balanced_mia.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase8_m2_balanced_mia.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase8_m2_balanced_mia.jsonl
+[unified-m2] 22:21:29 all DONE
+5 results/phase8_m2_balanced_mia.jsonl

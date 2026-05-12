@@ -1,0 +1,2 @@
+{"cmd": ["/usr/bin/python3", "-m", "scripts.run_experiment", "--model", "lightgcn", "--dataset", "digital_music", "--seed", "2025", "--cuda", "0", "--tag", "baseline", "--results_jsonl", "results/baselines_digital.jsonl"], "returncode": -15, "seconds": 232.22561478614807}
+{"cmd": ["/usr/bin/python3", "-m", "scripts.run_experiment", "--model", "lightgcn_agr", "--dataset", "digital_music", "--seed", "2025", "--cuda", "0", "--tag", "default", "--results_jsonl", "results/baselines_digital.jsonl"], "returncode": -15, "seconds": 232.29396057128906}

@@ -1,0 +1,114 @@
+optimizer:
+  name: adam
+  lr: 1.0e-3
+  weight_decay: 0
+
+train:
+  epoch: 3000
+  batch_size: 4096
+  save_model: true
+  loss: pairwise
+  test_step: 3
+  reproducible: true
+  seed: 2025
+  patience: 5
+
+# DP-SGD overrides used only by main_dp.py
+privacy:
+  clip_norm: 1.0
+  noise_multiplier: 1.0
+  delta: 1.0e-5
+  save_suffix: dp
+  disable_model_randomness: true
+  # main_dp.py uses very small batch+epoch because of per-sample gradient cost
+  dp_batch_size: 64
+  dp_epoch: 20
+
+test:
+  metrics: [recall, ndcg]
+  k: [5, 10, 20]
+  batch_size: 1024
+
+data:
+  type: general_cf
+  name: digital_music
+
+# Each weight gates exactly one loss term. Set a weight to 0.0 to ablate.
+# Total = bpr + reg_weight*L_reg + prf_weight*L_prf + str_weight*L_str
+#         + recon_weight*L_recon + beta*L_hsic
+model:
+  name: lightgcn_agr
+  embedding_size: 32
+
+  # graph propagation
+  layer_num: 3
+  keep_rate: 0.8
+  reg_weight: 1.0e-7
+
+  # LLM-augmented graph: top-K semantic edges added per user.
+  # Smaller K -> aug graph closer to cf graph -> milder structural contrast.
+  aug_top_k: 5
+
+  # Mask reconstruction self-supervision (set to 0 to disable; mainly an option)
+  mask_ratio: 0.15
+  recon_weight: 0.0
+  re_temperature: 0.2
+
+  # Distillation / contrast InfoNCE temperature
+  kd_temperature: 0.2
+
+  # === The four key knobs to sweep for the privacy-utility study ===
+  # Calibrated empirically so per-anchor regularizer magnitude is small relative
+  # to BPR loss (~0.7). With cal_infonce_loss summing over batch then dividing
+  # by len(ancs), each contrastive term contributes ~9 per-anchor before
+  # weighting; the str_weight=0.05 default keeps it ~0.45, comparable to BPR.
+  prf_weight: 0.002   # semantic distillation strength
+  str_weight: 0.05    # structural contrast (cf vs LLM-aug graph) strength
+  beta: 1.0           # HSIC information-bottleneck strength
+  sigma: 0.25         # HSIC Gaussian kernel width
+
+  # Per-dataset overrides (each tuned to give utility close to LightGCN baseline)
+  amazon:
+    layer_num: 3
+    reg_weight: 1.0e-7
+    prf_weight: 0.002
+    str_weight: 0.05
+    beta: 0.5
+    sigma: 0.3
+    keep_rate: 0.8
+
+  yelp:
+    layer_num: 3
+    reg_weight: 1.0e-7
+    prf_weight: 0.003
+    str_weight: 0.06
+    beta: 1.0
+    sigma: 0.25
+    keep_rate: 0.8
+
+  digital_music:
+    layer_num: 3
+    reg_weight: 1.0e-6
+    prf_weight: 0.002
+    str_weight: 0.05
+    beta: 1.0
+    sigma: 0.28
+    keep_rate: 0.8
+
+  luxury_beauty:
+    layer_num: 3
+    reg_weight: 1.0e-6
+    prf_weight: 0.002
+    str_weight: 0.05
+    beta: 1.0
+    sigma: 0.28
+    keep_rate: 0.8
+
+  industrial_scientific:
+    layer_num: 3
+    reg_weight: 1.0e-7
+    prf_weight: 0.002
+    str_weight: 0.05
+    beta: 1.0
+    sigma: 0.28
+    keep_rate: 0.8

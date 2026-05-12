@@ -1,0 +1,38 @@
+[p13] 02:24:00 [slot 0/cuda 0] start #0 model=lightgcn_agr_adv tag=p13a_emb16_adv0.05
+[p13] 02:24:00 [slot 2/cuda 1] start #1 model=lightgcn_agr_adv tag=p13a_emb24_adv0.05
+[p13] 02:24:00 [slot 1/cuda 0] start #2 model=lightgcn_agr_adv tag=p13a_emb16_adv0.1
+[p13] 02:24:00 [slot 5/cuda 2] start #3 model=lightgcn_agr tag=p13a_emb16_b0s0
+[p13] 02:24:00 [slot 7/cuda 3] start #4 model=lightgcn_agr tag=p13b_augk0_b0s0
+[p13] 02:24:00 [slot 4/cuda 2] start #5 model=lightgcn_agr tag=p13b_augk3_b0s0
+[p13] 02:24:00 [slot 3/cuda 1] start #6 model=lightgcn_agr tag=p13b_augk10_b0s0
+[p13] 02:24:00 [slot 6/cuda 3] start #7 model=lightgcn_agr tag=p13b_augk20_b0s0
+[p13] 03:43:39 [slot 3] DONE #6 p13b_augk10_b0s0
+[p13] 03:43:40 [slot 3/cuda 1] start #8 model=lightgcn_agr tag=p13c_kr0.3
+[p13] 03:43:40 [slot 7] DONE #4 p13b_augk0_b0s0
+[p13] 03:43:40 [slot 5] DONE #3 p13a_emb16_b0s0
+[p13] 03:43:40 [slot 7/cuda 3] start #9 model=lightgcn_agr tag=p13c_kr0.5
+[p13] 03:43:40 [slot 5/cuda 2] start #10 model=lightgcn_agr tag=p13c_kr0.6
+[p13] 03:43:47 [slot 4] DONE #5 p13b_augk3_b0s0
+[p13] 03:43:47 [slot 4/cuda 2] start #11 model=lightgcn_agr_adv tag=p13d_adv0.15_p15
+[p13] 03:44:10 [slot 6] DONE #7 p13b_augk20_b0s0
+[p13] 03:44:10 [slot 6/cuda 3] start #12 model=lightgcn_agr_adv tag=p13d_adv0.05_p15
+[p13] 03:55:45 [slot 3] DONE #8 p13c_kr0.3
+[p13] 03:55:45 [slot 3/cuda 1] start #13 model=lightgcn_agr_adv tag=p13d_adv0.2_lam0.5_p15
+[p13] 04:37:54 [slot 2] DONE #1 p13a_emb24_adv0.05
+[p13] [slot 2] queue empty
+[p13] 04:50:58 [slot 1] DONE #2 p13a_emb16_adv0.1
+[p13] [slot 1] queue empty
+[p13] 04:51:02 [slot 0] DONE #0 p13a_emb16_adv0.05
+[p13] [slot 0] queue empty
+[p13] 05:02:16 [slot 7] DONE #9 p13c_kr0.5
+[p13] [slot 7] queue empty
+[p13] 05:02:20 [slot 5] DONE #10 p13c_kr0.6
+[p13] [slot 5] queue empty
+[p13] 05:41:55 [slot 4] DONE #11 p13d_adv0.15_p15
+[p13] [slot 4] queue empty
+[p13] 05:42:22 [slot 6] DONE #12 p13d_adv0.05_p15
+[p13] [slot 6] queue empty
+[p13] 05:48:08 [slot 3] DONE #13 p13d_adv0.2_lam0.5_p15
+[p13] [slot 3] queue empty
+[p13] 05:48:08 ALL DONE
+14 results/phase13_extensions.jsonl

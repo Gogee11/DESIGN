@@ -1,0 +1,19 @@
+{
+  "kind": "utility",
+  "model": "lightgcn_agr_conf",
+  "dataset": "digital_music",
+  "seed": 2025,
+  "tag": "s2_llmconf_a0.1_t0.6",
+  "best_epoch": 180,
+  "k_list": [
+    5,
+    10,
+    20
+  ],
+  "recall@5": 0.10916838563071779,
+  "recall@10": 0.1687773585190486,
+  "recall@20": 0.24760533741197194,
+  "ndcg@5": 0.09194669726554751,
+  "ndcg@10": 0.11363498986125331,
+  "ndcg@20": 0.13807921653158176
+}

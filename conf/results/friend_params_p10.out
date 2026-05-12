@@ -1,0 +1,82 @@
+/root/private_data/wxy/llw/code/load_data/data_handler_general_cf.py:49: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(degree, -0.5).reshape(-1)
+{'optimizer': {'name': 'adam', 'lr': 0.001, 'weight_decay': 0}, 'train': {'epoch': 200, 'batch_size': 4096, 'save_model': True, 'loss': 'pairwise', 'test_step': 3, 'reproducible': True, 'seed': 2025, 'patience': 10}, 'test': {'metrics': ['recall', 'ndcg'], 'k': [5, 10, 20], 'batch_size': 1024}, 'data': {'type': 'general_cf', 'name': 'digital_music', 'dir': '/root/private_data/wxy/llw/code/data/digital_music', 'user_num': 5541, 'item_num': 3568}, 'model': {'name': 'lightgcn_agr', 'embedding_size': 32, 'layer_num': 3, 'keep_rate': 0.7, 'reg_weight': 5e-07, 'aug_top_k': 5, 'mask_ratio': 0.15, 'recon_weight': 0.0, 're_temperature': 0.2, 'kd_temperature': 0.2, 'prf_weight': 0.01, 'str_weight': 0.16, 'beta': 5.0, 'sigma': 0.25, 'amazon': {'layer_num': 3, 'reg_weight': 1e-07, 'prf_weight': 0.002, 'str_weight': 0.05, 'beta': 0.5, 'sigma': 0.3, 'keep_rate': 0.8}, 'yelp': {'layer_num': 3, 'reg_weight': 1e-07, 'prf_weight': 0.003, 'str_weight': 0.06, 'beta': 1.0, 'sigma': 0.25, 'keep_rate': 0.8}, 'digital_music': {'layer_num': 3, 'reg_weight': 5e-07, 'prf_weight': 0.01, 'str_weight': 0.16, 'beta': 5.0, 'sigma': 0.25, 'keep_rate': 0.7}, 'luxury_beauty': {'layer_num': 3, 'reg_weight': 1e-06, 'prf_weight': 0.002, 'str_weight': 0.05, 'beta': 1.0, 'sigma': 0.28, 'keep_rate': 0.8}, 'industrial_scientific': {'layer_num': 3, 'reg_weight': 1e-07, 'prf_weight': 0.002, 'str_weight': 0.05, 'beta': 1.0, 'sigma': 0.28, 'keep_rate': 0.8}}}
+Epoch 0  [recall@5: 0.0035 recall@10: 0.0062 recall@20: 0.0122 ] [ndcg@5: 0.0025 ndcg@10: 0.0035 ndcg@20: 0.0052 ] 
+Epoch 3  [recall@5: 0.0249 recall@10: 0.0372 recall@20: 0.0586 ] [ndcg@5: 0.0208 ndcg@10: 0.0249 ndcg@20: 0.0313 ] 
+Epoch 6  [recall@5: 0.0338 recall@10: 0.0531 recall@20: 0.0794 ] [ndcg@5: 0.0286 ndcg@10: 0.0352 ndcg@20: 0.0432 ] 
+Epoch 9  [recall@5: 0.0407 recall@10: 0.0614 recall@20: 0.0911 ] [ndcg@5: 0.0332 ndcg@10: 0.0404 ndcg@20: 0.0491 ] 
+Epoch 12  [recall@5: 0.0483 recall@10: 0.0710 recall@20: 0.0999 ] [ndcg@5: 0.0389 ndcg@10: 0.0464 ndcg@20: 0.0550 ] 
+Epoch 15  [recall@5: 0.0519 recall@10: 0.0732 recall@20: 0.1057 ] [ndcg@5: 0.0417 ndcg@10: 0.0491 ndcg@20: 0.0588 ] 
+Epoch 18  [recall@5: 0.0543 recall@10: 0.0773 recall@20: 0.1146 ] [ndcg@5: 0.0435 ndcg@10: 0.0517 ndcg@20: 0.0627 ] 
+Epoch 21  [recall@5: 0.0577 recall@10: 0.0821 recall@20: 0.1205 ] [ndcg@5: 0.0463 ndcg@10: 0.0545 ndcg@20: 0.0661 ] 
+Epoch 24  [recall@5: 0.0589 recall@10: 0.0867 recall@20: 0.1239 ] [ndcg@5: 0.0472 ndcg@10: 0.0568 ndcg@20: 0.0680 ] 
+Epoch 27  [recall@5: 0.0624 recall@10: 0.0886 recall@20: 0.1301 ] [ndcg@5: 0.0497 ndcg@10: 0.0587 ndcg@20: 0.0712 ] 
+Epoch 30  [recall@5: 0.0637 recall@10: 0.0939 recall@20: 0.1348 ] [ndcg@5: 0.0513 ndcg@10: 0.0617 ndcg@20: 0.0741 ] 
+Epoch 33  [recall@5: 0.0676 recall@10: 0.0984 recall@20: 0.1395 ] [ndcg@5: 0.0538 ndcg@10: 0.0646 ndcg@20: 0.0769 ] 
+Epoch 36  [recall@5: 0.0716 recall@10: 0.1031 recall@20: 0.1472 ] [ndcg@5: 0.0567 ndcg@10: 0.0679 ndcg@20: 0.0809 ] 
+Epoch 39  [recall@5: 0.0746 recall@10: 0.1072 recall@20: 0.1530 ] [ndcg@5: 0.0587 ndcg@10: 0.0700 ndcg@20: 0.0835 ] 
+Epoch 42  [recall@5: 0.0771 recall@10: 0.1121 recall@20: 0.1598 ] [ndcg@5: 0.0609 ndcg@10: 0.0732 ndcg@20: 0.0872 ] 
+Epoch 45  [recall@5: 0.0824 recall@10: 0.1168 recall@20: 0.1658 ] [ndcg@5: 0.0638 ndcg@10: 0.0759 ndcg@20: 0.0903 ] 
+Epoch 48  [recall@5: 0.0849 recall@10: 0.1210 recall@20: 0.1729 ] [ndcg@5: 0.0655 ndcg@10: 0.0782 ndcg@20: 0.0935 ] 
+Epoch 51  [recall@5: 0.0848 recall@10: 0.1240 recall@20: 0.1807 ] [ndcg@5: 0.0664 ndcg@10: 0.0803 ndcg@20: 0.0969 ] 
+Epoch 54  [recall@5: 0.0870 recall@10: 0.1274 recall@20: 0.1876 ] [ndcg@5: 0.0681 ndcg@10: 0.0823 ndcg@20: 0.0999 ] 
+Epoch 57  [recall@5: 0.0887 recall@10: 0.1322 recall@20: 0.1931 ] [ndcg@5: 0.0692 ndcg@10: 0.0842 ndcg@20: 0.1019 ] 
+Epoch 60  [recall@5: 0.0908 recall@10: 0.1352 recall@20: 0.1992 ] [ndcg@5: 0.0707 ndcg@10: 0.0860 ndcg@20: 0.1047 ] 
+Epoch 63  [recall@5: 0.0908 recall@10: 0.1400 recall@20: 0.2058 ] [ndcg@5: 0.0716 ndcg@10: 0.0885 ndcg@20: 0.1078 ] 
+Epoch 66  [recall@5: 0.0932 recall@10: 0.1434 recall@20: 0.2098 ] [ndcg@5: 0.0733 ndcg@10: 0.0904 ndcg@20: 0.1100 ] 
+Epoch 69  [recall@5: 0.0950 recall@10: 0.1480 recall@20: 0.2141 ] [ndcg@5: 0.0751 ndcg@10: 0.0932 ndcg@20: 0.1127 ] 
+Epoch 72  [recall@5: 0.0984 recall@10: 0.1508 recall@20: 0.2199 ] [ndcg@5: 0.0774 ndcg@10: 0.0954 ndcg@20: 0.1157 ] 
+Epoch 75  [recall@5: 0.0979 recall@10: 0.1530 recall@20: 0.2235 ] [ndcg@5: 0.0782 ndcg@10: 0.0975 ndcg@20: 0.1181 ] 
+Epoch 78  [recall@5: 0.1001 recall@10: 0.1565 recall@20: 0.2275 ] [ndcg@5: 0.0799 ndcg@10: 0.0996 ndcg@20: 0.1204 ] 
+Epoch 81  [recall@5: 0.1038 recall@10: 0.1594 recall@20: 0.2316 ] [ndcg@5: 0.0816 ndcg@10: 0.1011 ndcg@20: 0.1222 ] 
+Epoch 84  [recall@5: 0.1052 recall@10: 0.1631 recall@20: 0.2343 ] [ndcg@5: 0.0826 ndcg@10: 0.1025 ndcg@20: 0.1235 ] 
+Epoch 87  [recall@5: 0.1061 recall@10: 0.1646 recall@20: 0.2354 ] [ndcg@5: 0.0834 ndcg@10: 0.1036 ndcg@20: 0.1246 ] 
+Epoch 90  [recall@5: 0.1070 recall@10: 0.1661 recall@20: 0.2372 ] [ndcg@5: 0.0844 ndcg@10: 0.1049 ndcg@20: 0.1258 ] 
+Epoch 93  [recall@5: 0.1079 recall@10: 0.1681 recall@20: 0.2395 ] [ndcg@5: 0.0849 ndcg@10: 0.1057 ndcg@20: 0.1266 ] 
+Epoch 96  [recall@5: 0.1093 recall@10: 0.1699 recall@20: 0.2404 ] [ndcg@5: 0.0860 ndcg@10: 0.1069 ndcg@20: 0.1275 ] 
+Epoch 99  [recall@5: 0.1109 recall@10: 0.1704 recall@20: 0.2420 ] [ndcg@5: 0.0869 ndcg@10: 0.1074 ndcg@20: 0.1283 ] 
+Epoch 102  [recall@5: 0.1113 recall@10: 0.1708 recall@20: 0.2416 ] [ndcg@5: 0.0877 ndcg@10: 0.1082 ndcg@20: 0.1290 ] 
+Epoch 105  [recall@5: 0.1119 recall@10: 0.1712 recall@20: 0.2420 ] [ndcg@5: 0.0877 ndcg@10: 0.1082 ndcg@20: 0.1290 ] 
+Epoch 108  [recall@5: 0.1134 recall@10: 0.1703 recall@20: 0.2397 ] [ndcg@5: 0.0883 ndcg@10: 0.1080 ndcg@20: 0.1286 ] 
+Epoch 111  [recall@5: 0.1152 recall@10: 0.1694 recall@20: 0.2397 ] [ndcg@5: 0.0893 ndcg@10: 0.1082 ndcg@20: 0.1289 ] 
+Epoch 114  [recall@5: 0.1153 recall@10: 0.1691 recall@20: 0.2414 ] [ndcg@5: 0.0892 ndcg@10: 0.1080 ndcg@20: 0.1292 ] 
+Epoch 117  [recall@5: 0.1150 recall@10: 0.1691 recall@20: 0.2410 ] [ndcg@5: 0.0893 ndcg@10: 0.1082 ndcg@20: 0.1294 ] 
+Epoch 120  [recall@5: 0.1161 recall@10: 0.1693 recall@20: 0.2414 ] [ndcg@5: 0.0901 ndcg@10: 0.1086 ndcg@20: 0.1298 ] 
+Epoch 123  [recall@5: 0.1172 recall@10: 0.1698 recall@20: 0.2414 ] [ndcg@5: 0.0906 ndcg@10: 0.1087 ndcg@20: 0.1299 ] 
+Epoch 126  [recall@5: 0.1175 recall@10: 0.1698 recall@20: 0.2412 ] [ndcg@5: 0.0907 ndcg@10: 0.1087 ndcg@20: 0.1298 ] 
+Epoch 129  [recall@5: 0.1177 recall@10: 0.1696 recall@20: 0.2411 ] [ndcg@5: 0.0908 ndcg@10: 0.1088 ndcg@20: 0.1298 ] 
+[recall@5: 0.1109 recall@10: 0.1704 recall@20: 0.2420 ] [ndcg@5: 0.0869 ndcg@10: 0.1074 ndcg@20: 0.1283 ] 
+[recall@5: 0.1157 recall@10: 0.1700 recall@20: 0.2384 ] [ndcg@5: 0.0972 ndcg@10: 0.1172 ndcg@20: 0.1386 ] 
+Save model parameters to ./checkpoint/lightgcn_agr/lightgcn_agr-digital_music-2025-friend_params_p10.pth
+Best Epoch 99. Final test result: {'recall': array([0.11574362, 0.16997219, 0.23843627]), 'ndcg': array([0.09719975, 0.1171519 , 0.13858609])}.
+/root/private_data/wxy/llw/code/load_data/data_handler_general_cf.py:49: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(degree, -0.5).reshape(-1)
+/root/private_data/wxy/llw/code/attack/MIA.py:340: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(ckpt, map_location=configs['device'])
+==== Membership Inference Attack ====
+Model    : lightgcn_agr
+Dataset  : digital_music
+Device   : cuda
+Attacker : lr
+Checkpoint: checkpoint/lightgcn_agr/lightgcn_agr-digital_music-2025-friend_params_p10.pth
+Members     : 37045
+Non-members : 50000 (mixed)
+
+==== Attack Result ====
+auc       : 0.9377
+acc       : 0.8550
+precision : 0.7845
+recall    : 0.9091
+f1        : 0.8422
+train_size: 60931
+test_size : 26114
+attacker_backend: sklearn
+
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase11_friend.jsonl
+[run_experiment] TRAIN: /usr/bin/python3 main.py --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 1 --tag friend_params_p10 --prf_weight 0.01 --str_weight 0.16 --beta 5.0 --sigma 0.25 --reg_weight 5e-07 --keep_rate 0.7 --aug_top_k 5 --epoch 200 --patience 10
+[run_experiment] train done in 6258.0s
+[run_experiment] MIA: /usr/bin/python3 -m attack.MIA --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 1 --checkpoint_path checkpoint/lightgcn_agr/lightgcn_agr-digital_music-2025-friend_params_p10.pth --out_json results/phase11_friend.jsonl --attacker lr --tag friend_params_p10 --prf_weight 0.01 --str_weight 0.16 --beta 5.0 --sigma 0.25 --reg_weight 5e-07 --keep_rate 0.7 --aug_top_k 5 --epoch 200 --patience 10
+[run_experiment] MIA done in 51.5s
+[run_experiment] OK lightgcn_agr/digital_music/friend_params_p10

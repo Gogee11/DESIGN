@@ -1,0 +1,40 @@
+optimizer: { name: adam, lr: 1.0e-3, weight_decay: 0 }
+train: { epoch: 3000, batch_size: 4096, save_model: true, loss: pairwise, test_step: 3, reproducible: true, seed: 2025, patience: 5 }
+privacy: { clip_norm: 1.0, noise_multiplier: 1.0, delta: 1.0e-5, save_suffix: dp, disable_model_randomness: true }
+test: { metrics: [recall, ndcg], k: [5, 10, 20], batch_size: 1024 }
+data: { type: general_cf, name: digital_music }
+
+model:
+  name: lightgcn_agr_combo
+  embedding_size: 32
+  layer_num: 3
+  keep_rate: 0.8
+  reg_weight: 1.0e-7
+  aug_top_k: 5
+  mask_ratio: 0.15
+  recon_weight: 0.0
+  re_temperature: 0.2
+  kd_temperature: 0.2
+  prf_weight: 0.002
+  str_weight: 0.0
+  beta: 0.0
+  sigma: 0.25
+  conf_weight: 0.3
+  conf_target: 0.7
+  conf_neg_target: 0.3
+  adv_weight: 0.05
+  adv_lambda: 1.0
+
+  digital_music:
+    layer_num: 3
+    reg_weight: 1.0e-6
+    prf_weight: 0.002
+    str_weight: 0.0
+    beta: 0.0
+    sigma: 0.28
+    keep_rate: 0.8
+    conf_weight: 0.3
+    conf_target: 0.7
+    conf_neg_target: 0.3
+    adv_weight: 0.05
+    adv_lambda: 1.0

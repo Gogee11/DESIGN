@@ -1,0 +1,19 @@
+{
+  "kind": "utility",
+  "model": "lightgcn_agr",
+  "dataset": "digital_music",
+  "seed": 2027,
+  "tag": "p14a_agrdef_seed2027",
+  "best_epoch": 57,
+  "k_list": [
+    5,
+    10,
+    20
+  ],
+  "recall@5": 0.11971497884172054,
+  "recall@10": 0.17744035327063393,
+  "recall@20": 0.2528074615678231,
+  "ndcg@5": 0.10039085704679261,
+  "ndcg@10": 0.1213674082294755,
+  "ndcg@20": 0.14496885948865545
+}

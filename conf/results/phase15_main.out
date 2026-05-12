@@ -1,0 +1,34 @@
+[p15] 05:14:37 [slot 0/cuda 0] start #0 model=lightgcn_agr tag=p15_emb10_b0s0
+[p15] 05:14:37 [slot 4/cuda 2] start #1 model=lightgcn_agr tag=p15_emb20_b0s0
+[p15] 05:14:37 [slot 1/cuda 0] start #2 model=lightgcn_agr_adv tag=p15_emb10_adv0.05
+[p15] 05:14:37 [slot 2/cuda 1] start #3 model=lightgcn_agr_adv tag=p15_emb10_adv0.1
+[p15] 05:14:37 [slot 3/cuda 1] start #4 model=lightgcn_agr_adv tag=p15_emb20_adv0.05
+[p15] 05:14:37 [slot 7/cuda 3] start #5 model=lightgcn_agr_adv tag=p15_emb12_adv0.05
+[p15] 05:14:37 [slot 6/cuda 3] start #6 model=lightgcn_agr_combo tag=p15_emb16_triple1
+[p15] 05:14:37 [slot 5/cuda 2] start #7 model=lightgcn_agr_combo tag=p15_emb16_triple2
+[p15] 05:29:53 [slot 2] DONE #3 p15_emb10_adv0.1
+[p15] 05:29:53 [slot 2/cuda 1] start #8 model=lightgcn_agr_combo tag=p15_combo_c0.5_a0.1_seed2026
+[p15] 06:24:52 [slot 0] DONE #0 p15_emb10_b0s0
+[p15] 06:24:52 [slot 0/cuda 0] start #9 model=lightgcn_agr_combo tag=p15_combo_c0.5_a0.1_seed2027
+[p15] 06:24:58 [slot 4] DONE #1 p15_emb20_b0s0
+[p15] 06:24:59 [slot 4/cuda 2] start #10 model=lightgcn_agr_adv tag=p15_emb16_adv0.1_seed2026
+[p15] 07:22:52 [slot 5] DONE #7 p15_emb16_triple2
+[p15] 07:22:52 [slot 5/cuda 2] start #11 model=lightgcn_agr_adv tag=p15_emb16_adv0.1_seed2027
+[p15] 07:22:56 [slot 1] DONE #2 p15_emb10_adv0.05
+[p15] [slot 1] queue empty
+[p15] 07:23:16 [slot 3] DONE #4 p15_emb20_adv0.05
+[p15] [slot 3] queue empty
+[p15] 07:23:21 [slot 7] DONE #5 p15_emb12_adv0.05
+[p15] [slot 7] queue empty
+[p15] 07:23:23 [slot 6] DONE #6 p15_emb16_triple1
+[p15] [slot 6] queue empty
+[p15] 07:31:04 [slot 2] DONE #8 p15_combo_c0.5_a0.1_seed2026
+[p15] [slot 2] queue empty
+[p15] 07:50:47 [slot 4] DONE #10 p15_emb16_adv0.1_seed2026
+[p15] [slot 4] queue empty
+[p15] 07:50:52 [slot 0] DONE #9 p15_combo_c0.5_a0.1_seed2027
+[p15] [slot 0] queue empty
+[p15] 07:55:53 [slot 5] DONE #11 p15_emb16_adv0.1_seed2027
+[p15] [slot 5] queue empty
+[p15] 07:55:53 ALL DONE
+12 results/phase15_pareto_fill.jsonl

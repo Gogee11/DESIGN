@@ -1,0 +1,34 @@
+[p16] 06:07:19 [slot 6/cuda 3] start #0 model=lightgcn_agr tag=p16_emb2_b0s0
+[p16] 06:07:19 [slot 2/cuda 1] start #1 model=lightgcn_agr tag=p16_emb3_b0s0
+[p16] 06:07:19 [slot 4/cuda 2] start #2 model=lightgcn_agr tag=p16_emb4_seed2026
+[p16] 06:07:19 [slot 7/cuda 3] start #3 model=lightgcn_agr tag=p16_emb4_seed2027
+[p16] 06:07:19 [slot 1/cuda 0] start #4 model=lightgcn_agr tag=p16_emb8_seed2026
+[p16] 06:07:19 [slot 5/cuda 2] start #5 model=lightgcn_agr tag=p16_emb8_seed2027
+[p16] 06:07:19 [slot 3/cuda 1] start #6 model=lightgcn_agr_adv tag=p16_emb16adv01_seed2026
+[p16] 06:07:19 [slot 0/cuda 0] start #7 model=lightgcn_agr_adv tag=p16_emb16adv01_seed2027
+[p16] 06:51:02 [slot 6] DONE #0 p16_emb2_b0s0
+[p16] 06:51:02 [slot 6/cuda 3] start #8 model=lightgcn_agr_conf tag=p16_conf_w0.3_t0.4
+[p16] 06:51:52 [slot 7] DONE #3 p16_emb4_seed2027
+[p16] 06:51:52 [slot 7/cuda 3] start #9 model=lightgcn_agr_conf tag=p16_conf_w0.3_t0.6
+[p16] 06:52:23 [slot 4] DONE #2 p16_emb4_seed2026
+[p16] 06:52:24 [slot 4/cuda 2] start #10 model=lightgcn_agr_conf tag=p16_conf_w0.3_t0.8
+[p16] 06:57:50 [slot 2] DONE #1 p16_emb3_b0s0
+[p16] 06:57:50 [slot 2/cuda 1] start #11 model=lightgcn_agr_conf tag=p16_conf_w0.3_t0.9
+[p16] 07:30:33 [slot 1] DONE #4 p16_emb8_seed2026
+[p16] [slot 1] queue empty
+[p16] 07:30:34 [slot 5] DONE #5 p16_emb8_seed2027
+[p16] [slot 5] queue empty
+[p16] 08:27:11 [slot 3] DONE #6 p16_emb16adv01_seed2026
+[p16] [slot 3] queue empty
+[p16] 08:27:26 [slot 0] DONE #7 p16_emb16adv01_seed2027
+[p16] [slot 0] queue empty
+[p16] 08:56:39 [slot 6] DONE #8 p16_conf_w0.3_t0.4
+[p16] [slot 6] queue empty
+[p16] 08:57:08 [slot 7] DONE #9 p16_conf_w0.3_t0.6
+[p16] [slot 7] queue empty
+[p16] 08:57:13 [slot 4] DONE #10 p16_conf_w0.3_t0.8
+[p16] [slot 4] queue empty
+[p16] 08:59:52 [slot 2] DONE #11 p16_conf_w0.3_t0.9
+[p16] [slot 2] queue empty
+[p16] 08:59:52 ALL DONE
+12 results/phase16_extreme_seeds.jsonl

@@ -1,0 +1,19 @@
+[phase5] 19:59:03 start: MLP attacker on existing ckpts (CPU)
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase5_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase5_mlp_attacker.jsonl
+Risk: High privacy leakage risk
+
+Appended metrics to results/phase5_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase5_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase5_mlp_attacker.jsonl
+  File "/root/private_data/wxy/llw/code/config/configurator.py", line 102, in parse_configure
+    v = getattr(args, key)
+AttributeError: 'Namespace' object has no attribute 'adv_weight'. Did you mean: 'prf_weight'?

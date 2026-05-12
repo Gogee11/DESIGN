@@ -1,0 +1,19 @@
+{
+  "kind": "utility",
+  "model": "lightgcn_agr_adv",
+  "dataset": "digital_music",
+  "seed": 2026,
+  "tag": "p16_emb16adv01_seed2026",
+  "best_epoch": 192,
+  "k_list": [
+    5,
+    10,
+    20
+  ],
+  "recall@5": 0.08591697295595078,
+  "recall@10": 0.13619969067514082,
+  "recall@20": 0.21319293056063368,
+  "ndcg@5": 0.07240153575938753,
+  "ndcg@10": 0.09129825333177989,
+  "ndcg@20": 0.11498047083090712
+}

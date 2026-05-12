@@ -1,0 +1,14 @@
+[p17] 07:57:50 [slot 0/cuda 0] start #0 p17_emb12_seed2026
+[p17] 07:57:50 [slot 1/cuda 0] start #1 p17_emb12_seed2027
+[p17] 07:57:50 [slot 2/cuda 1] start #2 p17_emb6_seed2026
+[p17] 07:57:50 [slot 5/cuda 2] start #3 p17_emb6_seed2027
+[p17] 07:57:50 [slot 4/cuda 2] start #4 p17_dpsgd_ref
+[p17] 07:57:50 [slot 6/cuda 3] start #5 p17_adv005_p20
+[p17] 08:00:19 [slot 4] DONE #4 p17_dpsgd_ref
+[p17] 08:33:46 [slot 2] DONE #2 p17_emb6_seed2026
+[p17] 08:37:37 [slot 5] DONE #3 p17_emb6_seed2027
+[p17] 08:38:15 [slot 1] DONE #1 p17_emb12_seed2027
+[p17] 08:38:24 [slot 0] DONE #0 p17_emb12_seed2026
+[p17] 08:43:29 [slot 6] DONE #5 p17_adv005_p20
+[p17-train] 08:43:29 ALL TRAIN DONE
+[p17-eval] 08:43:29 running post-hoc noise sweeps

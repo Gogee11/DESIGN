@@ -1,0 +1,60 @@
+[17:52:23] phase 1: full-budget baselines
+[sweep] grid=all_baselines datasets=['digital_music'] cells=2 workers=2
+[sweep] results -> results/phase1_baselines.jsonl
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn --dataset digital_music --seed 2025 --cuda 0 --tag baseline --results_jsonl results/phase1_baselines.jsonl
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag default --results_jsonl results/phase1_baselines.jsonl
+[sweep] done rc=0 dt=609.6s :: --cuda 0 --tag default --results_jsonl results/phase1_baselines.jsonl
+[sweep] done rc=0 dt=768.5s :: --cuda 0 --tag baseline --results_jsonl results/phase1_baselines.jsonl
+
+[sweep] OK 2/2, FAIL 0
+[sweep] details: results/phase1_baselines.summary.jsonl
+[sweep] metrics: results/phase1_baselines.jsonl
+[18:05:11] phase 2: HP sweep (epoch=200 workers=3 grid=pareto)
+[sweep] grid=pareto datasets=['digital_music'] cells=9 workers=3
+[sweep] results -> results/phase2_pareto.jsonl
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b0.0_s0.0 --results_jsonl results/phase2_pareto.jsonl --beta 0.0 --str_weight 0.0 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b0.0_s0.05 --results_jsonl results/phase2_pareto.jsonl --beta 0.0 --str_weight 0.05 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b0.0_s0.2 --results_jsonl results/phase2_pareto.jsonl --beta 0.0 --str_weight 0.2 --epoch 200 --patience 3
+[sweep] done rc=0 dt=792.6s :: --str_weight 0.05 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b1.0_s0.0 --results_jsonl results/phase2_pareto.jsonl --beta 1.0 --str_weight 0.0 --epoch 200 --patience 3
+[sweep] done rc=0 dt=1465.1s :: --str_weight 0.2 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b1.0_s0.05 --results_jsonl results/phase2_pareto.jsonl --beta 1.0 --str_weight 0.05 --epoch 200 --patience 3
+[sweep] done rc=0 dt=1470.1s :: --str_weight 0.0 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b1.0_s0.2 --results_jsonl results/phase2_pareto.jsonl --beta 1.0 --str_weight 0.2 --epoch 200 --patience 3
+[sweep] done rc=0 dt=1030.8s :: --str_weight 0.05 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b4.0_s0.0 --results_jsonl results/phase2_pareto.jsonl --beta 4.0 --str_weight 0.0 --epoch 200 --patience 3
+[sweep] done rc=0 dt=2128.0s :: --str_weight 0.2 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b4.0_s0.05 --results_jsonl results/phase2_pareto.jsonl --beta 4.0 --str_weight 0.05 --epoch 200 --patience 3
+[sweep] done rc=0 dt=3197.2s :: --str_weight 0.0 --epoch 200 --patience 3
+[sweep] start: /usr/bin/python3 -m scripts.run_experiment --model lightgcn_agr --dataset digital_music --seed 2025 --cuda 0 --tag b4.0_s0.2 --results_jsonl results/phase2_pareto.jsonl --beta 4.0 --str_weight 0.2 --epoch 200 --patience 3
+[sweep] done rc=0 dt=1888.5s :: --str_weight 0.0 --epoch 200 --patience 3
+[sweep] done rc=0 dt=969.8s :: --str_weight 0.05 --epoch 200 --patience 3
+[sweep] done rc=0 dt=694.4s :: --str_weight 0.2 --epoch 200 --patience 3
+
+[sweep] OK 9/9, FAIL 0
+[sweep] details: results/phase2_pareto.summary.jsonl
+[sweep] metrics: results/phase2_pareto.jsonl
+[19:23:16] phase 3: collate + plot
+[plot] loaded 11 attack records from results/all_combined.jsonl
+[plot] wrote results/figs/summary.tsv
+[plot] saved results/figs/mia_digital_music.png
+[19:23:17] done. summary:
+total 83
+drwxr-xr-x  4 root root 8192 May  9 19:23 .
+drwxrwxr-x 15 1000 1001 8192 May  9 18:13 ..
+-rw-r--r--  1 root root 7225 May  9 19:23 all_combined.jsonl
+-rw-r--r--  1 root root  549 May  9 17:47 baselines_digital.summary.jsonl
+drwxr-xr-x  2 root root 8192 May  9 19:23 figs
+-rw-r--r--  1 root root 1294 May  9 18:05 phase1_baselines.jsonl
+-rw-r--r--  1 root root  541 May  9 18:05 phase1_baselines.summary.jsonl
+-rw-r--r--  1 root root 5931 May  9 19:23 phase2_pareto.jsonl
+-rw-r--r--  1 root root 3142 May  9 19:23 phase2_pareto.summary.jsonl
+-rw-r--r--  1 root root 4065 May  9 19:13 phase4_pushauc.jsonl
+-rw-r--r--  1 root root 9985 May  9 19:04 phase4b_testtime_defense.jsonl
+-rw-r--r--  1 root root  424 May  9 18:49 phase4c_attack_floor.jsonl
+-rw-r--r--  1 root root 3353 May  9 18:59 phase4d_eval_only.jsonl
+-rw-r--r--  1 root root 5906 May  9 19:11 phase4e_eval_mia.jsonl
+-rw-r--r--  1 root root 4175 May  9 19:23 pipeline.out
+-rw-r--r--  1 root root 1001 May  9 19:14 pushauc.out
+-rw-r--r--  1 root root  656 May  9 17:42 smoke.jsonl
+drwxr-xr-x  2 root root 8192 May  9 19:23 utility

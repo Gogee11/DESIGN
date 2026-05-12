@@ -1,0 +1,30 @@
+[p10] 23:58:24 [slot 0/cuda 0] start #0 model=lightgcn_agr_combo tag=s1_combo_c0.1_a0.05
+[p10] 23:58:24 [slot 2/cuda 1] start #1 model=lightgcn_agr_combo tag=s1_combo_c0.5_a0.05
+[p10] 23:58:24 [slot 3/cuda 1] start #2 model=lightgcn_agr_combo tag=s1_combo_c0.3_a0.02
+[p10] 23:58:24 [slot 1/cuda 0] start #3 model=lightgcn_agr_combo tag=s1_combo_c0.5_a0.1
+[p10] 23:58:24 [slot 4/cuda 2] start #4 model=lightgcn_agr_combo tag=s1_combo_c0.2_a0.05_t0.6
+[p10] 23:58:24 [slot 5/cuda 2] start #5 model=lightgcn_agr_conf tag=s2_llmconf_a0.1_t0.6
+[p10] 23:58:24 [slot 6/cuda 3] start #6 model=lightgcn_agr_conf tag=s2_llmconf_a0.2_t0.5
+[p10] 23:58:24 [slot 7/cuda 3] start #7 model=lightgcn_agr_conf tag=s2_llmconf_a0.3_t0.5
+[p10] 02:27:55 [slot 5] DONE #5 s2_llmconf_a0.1_t0.6
+[p10] 02:27:55 [slot 5/cuda 2] start #8 model=lightgcn_agr_conf tag=s2_llmconf_a0.2_t0.7
+[p10] 02:27:59 [slot 7] DONE #7 s2_llmconf_a0.3_t0.5
+[p10] 02:27:59 [slot 7/cuda 3] start #9 model=lightgcn_agr_conf tag=s2_llmconf_a0.4_t0.4
+[p10] 02:28:07 [slot 1] DONE #3 s1_combo_c0.5_a0.1
+[p10] [slot 1] queue empty; exiting
+[p10] 02:28:09 [slot 6] DONE #6 s2_llmconf_a0.2_t0.5
+[p10] [slot 6] queue empty; exiting
+[p10] 02:28:09 [slot 3] DONE #2 s1_combo_c0.3_a0.02
+[p10] [slot 3] queue empty; exiting
+[p10] 02:28:11 [slot 0] DONE #0 s1_combo_c0.1_a0.05
+[p10] 02:28:11 [slot 2] DONE #1 s1_combo_c0.5_a0.05
+[p10] [slot 0] queue empty; exiting
+[p10] [slot 2] queue empty; exiting
+[p10] 02:28:11 [slot 4] DONE #4 s1_combo_c0.2_a0.05_t0.6
+[p10] [slot 4] queue empty; exiting
+[p10] 02:57:49 [slot 7] DONE #9 s2_llmconf_a0.4_t0.4
+[p10] [slot 7] queue empty; exiting
+[p10] 02:57:50 [slot 5] DONE #8 s2_llmconf_a0.2_t0.7
+[p10] [slot 5] queue empty; exiting
+[p10] 02:57:50 ALL DONE
+10 results/phase10_stretch.jsonl

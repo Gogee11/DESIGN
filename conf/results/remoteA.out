@@ -1,0 +1,51 @@
+[remoteA] 00:49:05 [slot 0/cuda 0] start #0 model=lightgcn_agr tag=published_agr_seed2025
+[remoteA] 00:49:05 [slot 1/cuda 0] start #1 model=lightgcn tag=lgcn_baseline_seed2026
+[remoteA] 00:49:05 [slot 2/cuda 1] start #2 model=lightgcn tag=lgcn_baseline_seed2027
+[remoteA] 00:49:05 [slot 4/cuda 2] start #3 model=lightgcn_agr tag=b0s0_seed2026
+[remoteA] 00:49:05 [slot 3/cuda 1] start #4 model=lightgcn_agr tag=b0s0_seed2027
+[remoteA] 00:49:05 [slot 5/cuda 2] start #5 model=lightgcn_agr_adv tag=m4_adv0.05_seed2026
+[remoteA] 00:49:05 [slot 6/cuda 3] start #6 model=lightgcn_agr_adv tag=m4_adv0.05_seed2027
+[remoteA] [slot 7] queue empty; exiting
+[remoteA] 01:56:44 [slot 1] DONE #1 lgcn_baseline_seed2026
+[remoteA] [slot 1] queue empty; exiting
+[remoteA] 01:56:46 [slot 2] DONE #2 lgcn_baseline_seed2027
+[remoteA] [slot 2] queue empty; exiting
+[remoteA] 01:56:52 [slot 4] DONE #3 b0s0_seed2026
+[remoteA] [slot 4] queue empty; exiting
+[remoteA] 01:57:09 [slot 3] DONE #4 b0s0_seed2027
+[remoteA] [slot 3] queue empty; exiting
+[remoteA] 02:22:00 [slot 0] DONE #0 published_agr_seed2025
+[remoteA] [slot 0] queue empty; exiting
+[remoteA] 02:22:12 [slot 5] DONE #5 m4_adv0.05_seed2026
+[remoteA] [slot 5] queue empty; exiting
+[remoteA] 02:22:40 [slot 6] DONE #6 m4_adv0.05_seed2027
+[remoteA] [slot 6] queue empty; exiting
+[remoteA] 02:22:40 GPU phase done
+7 results/phase12_remoteA.jsonl
+[remoteA-mlp] 02:22:40 MLP attacker on existing ckpts
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: High privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: High privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: High privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+Risk: Very high privacy leakage risk
+
+Appended metrics to results/phase12b_mlp_attacker.jsonl
+[remoteA-mlp] 09:00:41 MLP done
+14 results/phase12b_mlp_attacker.jsonl

@@ -1,0 +1,103 @@
+\subsection{基于置信度正则的隐私增强实验}
+
+\subsubsection{设计动机}
+前文消融实验已经表明，LLM-AGR 默认配置中的结构对比损失项 $\mathcal{L}_{str}$ 是导致成员推断攻击（Membership Inference Attack, MIA）风险上升的主要原因。因此，后续隐私增强方案不再沿用默认的 $\mathcal{L}_{str}$ 约束，而是在移除高风险结构对比项的基础上，引入一种更直接面向 MIA 风险的训练时正则机制，即置信度正则（confidence regularization）。
+
+该设计的核心思想是：成员推断攻击往往依赖模型在训练样本上的过置信预测。对于排序推荐模型而言，标准 BPR 损失会持续拉大正样本与负样本之间的分数差距，使训练集中正样本的预测概率逼近 1、负样本概率逼近 0，从而形成可被攻击器利用的显著成员信号。已有研究指出，模型输出的置信度是黑盒成员推断攻击的重要依据之一\cite{jia2019memguard,chen2024overconfidence}；同时，抑制过置信输出本身也是经典正则化方向\cite{pereyra2017confidence}。因此，本文尝试在推荐排序目标不变的前提下，对输出置信度进行显式约束，以削弱训练样本与非训练样本之间的可分性。
+
+\subsubsection{方法设计}
+在原始 \texttt{lightgcn\_agr} 模型中，总损失可以写为：
+\begin{equation}
+\mathcal{L}_{AGR}
+=
+\mathcal{L}_{bpr}
++ \lambda_{prf}\mathcal{L}_{prf}
++ \lambda_{str}\mathcal{L}_{str}
++ \lambda_{ib}\mathcal{L}_{hsic}
++ \lambda_{reg}\mathcal{L}_{reg}.
+\end{equation}
+
+根据前文结论，本文在置信度正则方案中将结构对比项关闭，即令 $\lambda_{str}=0$，同时采用实验中表现更稳定的安全底座设置 $\lambda_{ib}=0$。在此基础上，引入新的置信度正则项 $\mathcal{L}_{conf}$，构成新的训练目标：
+\begin{equation}
+\mathcal{L}_{M1}
+=
+\mathcal{L}_{bpr}
++ \lambda_{prf}\mathcal{L}_{prf}
++ \lambda_{conf}\mathcal{L}_{conf}
++ \lambda_{reg}\mathcal{L}_{reg}.
+\end{equation}
+
+设用户 $u$ 对正样本物品 $i^{+}$ 和负样本物品 $i^{-}$ 的预测分数分别为 $s_{u,i^{+}}$ 与 $s_{u,i^{-}}$，记 $\sigma(\cdot)$ 为 Sigmoid 函数，则本文使用的置信度正则项定义为：
+\begin{equation}
+\mathcal{L}_{conf}
+=
+\frac{1}{|\mathcal{B}|}\sum_{(u,i^{+},i^{-}) \in \mathcal{B}}
+\left(\sigma(s_{u,i^{+}})-\tau_{pos}\right)^2
++
+\left(\sigma(s_{u,i^{-}})-\tau_{neg}\right)^2,
+\label{eq:conf_loss}
+\end{equation}
+其中，$\mathcal{B}$ 表示一个 mini-batch，$\tau_{pos}$ 和 $\tau_{neg}$ 分别表示正样本和负样本的目标置信度。直观上，该正则并不改变正负样本的相对排序方向，而是限制模型将正样本概率推得过高、将负样本概率压得过低，从而抑制过度自信的输出分布。最终总损失为：
+\begin{equation}
+\mathcal{L}
+=
+\mathcal{L}_{bpr}
++ \lambda_{conf}\mathcal{L}_{conf}
++ \text{other active terms},
+\end{equation}
+其中在本文的 M1 实验中，\texttt{str\_weight} 固定为 0，\texttt{beta} 固定为 0，默认使用 $\tau_{pos}=0.7$、$\tau_{neg}=0.3$。
+
+\subsubsection{实验设置}
+置信度正则实验基于 \texttt{digital\_music} 数据集开展，模型为 \texttt{lightgcn\_agr\_conf}，攻击器采用逻辑回归（LR）成员推断攻击，评价指标包括推荐性能指标 Recall@20 和隐私风险指标 MIA AUC。实验的基础配置继承自安全底座模型，即关闭结构对比项与 HSIC 项，仅保留 BPR 主目标及轻量语义蒸馏项。围绕置信度正则，本文主要考察两个超参数：
+\begin{itemize}
+\item $\lambda_{conf}$：置信度正则权重，对应代码中的 \texttt{conf\_weight}；
+\item $\tau_{pos}$：正样本目标置信度，对应代码中的 \texttt{conf\_target}。
+\end{itemize}
+此外，负样本目标置信度固定为 $\tau_{neg}=0.3$。主实验首先在 \texttt{Phase 8} 中完成 5 个代表性配置的对比，随后在 \texttt{Phase 9} 和 \texttt{Phase 16} 中进一步补充更细粒度的权重与目标值搜索，并在 \texttt{Phase 12b} 中使用 MLP 攻击器进行鲁棒性验证。
+
+\subsubsection{主实验结果}
+以 LightGCN 基线为参考，其 Recall@20 为 0.2414，MIA AUC 为 0.9016。表~\ref{tab:m1-main} 给出了置信度正则的主要结果。
+
+\begin{table}[htbp]
+\centering
+\caption{置信度正则（M1）主实验结果}
+\label{tab:m1-main}
+\begin{tabular}{cccc}
+\hline
+\texttt{conf\_weight} & \texttt{conf\_target} & Recall@20 & MIA AUC \\
+\hline
+0.1 & 0.7  & 0.2418 & 0.8805 \\
+0.5 & 0.7  & 0.2465 & 0.8870 \\
+2.0 & 0.7  & 0.2425 & 0.8997 \\
+0.5 & 0.55 & 0.2500 & 0.8920 \\
+5.0 & 0.6  & 0.2269 & 0.8871 \\
+\hline
+\end{tabular}
+\end{table}
+
+从表~\ref{tab:m1-main} 可以看出，置信度正则整体上实现了比 LightGCN 更优的隐私--效用折中。具体而言，轻量配置 \texttt{conf\_weight}=0.1、\texttt{conf\_target}=0.7 时，Recall@20 为 0.2418，与 LightGCN 基本持平，但 AUC 降至 0.8805，相比基线下降 2.1 个百分点，说明仅通过轻度抑制过置信输出，就可以显著削弱成员推断风险。另一方面，配置 \texttt{conf\_weight}=0.5、\texttt{conf\_target}=0.7 时，Recall@20 提升至 0.2465，高于 LightGCN 2.1\%，同时 AUC 为 0.8870，仍低于基线 1.5 个百分点，表现出更均衡的安全--性能优势。
+
+实验还表明，置信度正则并非越强越好。当 \texttt{conf\_weight} 增大到 2.0 甚至 5.0 时，AUC 降幅不再明显扩大，推荐性能反而开始退化；特别是 \texttt{conf\_weight}=5.0 时，Recall@20 明显下降至 0.2269。这说明过强的置信度约束会压缩模型的判别能力，使推荐质量受损。
+
+\subsubsection{补充结果与参数分析}
+\paragraph{更长 patience 下的权重细化}
+在 \texttt{Phase 9} 中，本文补充了更长 patience 设置下的两组结果：\texttt{conf\_weight}=0.3、\texttt{conf\_target}=0.7 时，Recall@20 为 0.2491，AUC 为 0.8945；\texttt{conf\_weight}=1.0、\texttt{conf\_target}=0.7 时，Recall@20 为 0.2462，AUC 为 0.8949。两者均未超过主实验中的最佳 Pareto 点，说明简单延长训练耐心并不能进一步放大 M1 的隐私收益。
+
+\paragraph{目标置信度细扫}
+在 \texttt{Phase 16} 中，固定 \texttt{conf\_weight}=0.3，对 \texttt{conf\_target} 进行了更细粒度搜索。结果显示，当 \texttt{conf\_target} 从 0.4 增加到 0.9 时，Recall@20 大致保持在 0.2480--0.2505 区间，AUC 在 0.8933--0.8962 之间轻微波动。这说明 \texttt{conf\_target} 确实提供了可调旋钮，但其影响相对温和，不改变 M1 的总体规律：中等强度的输出收缩最有利于取得稳定的隐私--效用平衡。
+
+\paragraph{LLM-aware target 的失败对照}
+本文还尝试过引入基于用户与物品语义相似度的自适应目标置信度，即令目标值随 LLM 语义余弦相似度动态变化。然而在 \texttt{Phase 10} 中，该变体的 AUC 基本落在 0.8928--0.8964 区间，未优于标准的固定目标版本。因此，后续论文主线仅保留 plain M1，而将该变体作为补充探索结果。
+
+\subsubsection{鲁棒性验证}
+为了验证置信度正则并非只对单一攻击器有效，本文进一步使用 MLP 攻击器进行复核。结果表明，LightGCN 基线在 MLP 攻击下的 AUC 为 0.9165，而 \texttt{conf\_weight}=0.1、\texttt{conf\_target}=0.7 时 AUC 为 0.8918，\texttt{conf\_weight}=0.5、\texttt{conf\_target}=0.7 时 AUC 为 0.9006。可见，尽管攻击器能力增强，M1 方案仍保持了与 LR 实验一致的相对排序，说明其防御效果具有一定鲁棒性。
+
+此外，多种子结果也支持上述结论。以 \texttt{conf\_weight}=0.1、\texttt{conf\_target}=0.7 为例，在 seed 2025、2026、2027 下的 AUC 分别为 0.8805、0.8909 和 0.8909，对应 Recall@20 分别为 0.2418、0.2476 和 0.2476。尽管绝对数值存在一定波动，但整体上始终优于默认 AGR 配置，且在多数情况下优于 LightGCN 基线，说明置信度正则带来的安全收益不是偶然现象。
+
+\subsubsection{结果讨论}
+综合实验结果可以看出，置信度正则适合作为去除结构对比项之后的第一类轻量隐私增强方案。与默认 AGR 相比，它不再依赖高风险的结构对比目标，而是直接约束输出层的过置信行为，从机制上切断了成员推断攻击最容易利用的信号来源。与更激进的嵌入压缩方法相比，M1 不会显著牺牲推荐效果；与对抗训练相比，它实现简单、训练稳定、额外开销小。因此，在本文的整体方案中，M1 更适合作为低成本、强可解释的基础防御模块，并为后续与 M4 的组合实验提供了良好的起点。
+
+\subsubsection{与相关工作的关系}
+本文的 M1 方案与已有工作在思想上具有明确关联。首先，MemGuard 指出，黑盒成员推断攻击高度依赖模型输出置信度，因此通过扰动或控制输出分布可以显著削弱攻击效果\cite{jia2019memguard}。其次，Pereyra 等人的 confidence penalty 说明，抑制模型过置信预测本身就是一种有效的正则化方式\cite{pereyra2017confidence}。更进一步，Chen 和 Pattabiraman 直接从成员推断防御角度提出，应通过降低模型过置信程度来缓解成员泄漏\cite{chen2024overconfidence}。此外，针对推荐系统场景，已有研究证明成员推断攻击同样能够有效攻击推荐模型，从而为本文的实验背景提供了直接支撑\cite{zhang2021miarec}.
+
+需要说明的是，本文的置信度正则并非对上述某一方法的直接复现，而是结合 BPR 排序目标与推荐系统 MIA 场景所设计的项目内实现变体。其创新点主要体现在：一方面，它将输出约束从分类概率推广到正负样本对的排序分数；另一方面，它与前文消融发现紧密衔接，作为替代高风险 $\mathcal{L}_{str}$ 的训练约束被系统验证。

@@ -1,0 +1,8 @@
+[push3] 19:55:09 start cuda=2 model=lightgcn_agr_priv tag=ag_priv_kr0.3_n0.30 args=--keep_rate 0.3 --priv_noise_std 0.30
+[push3] 19:55:09 start cuda=1 model=lightgcn_agr_priv tag=ag_priv_kr0.5_n0.15 args=--keep_rate 0.5 --priv_noise_std 0.15
+[push3] 19:55:09 start cuda=3 model=lightgcn_agr_priv tag=ag_priv_b0_s0_n0.15 args=--beta 0.0 --str_weight 0.0 --priv_noise_std 0.15
+[push3] 19:58:15 done cuda=3 tag=ag_priv_b0_s0_n0.15
+[push3] 20:01:09 done cuda=2 tag=ag_priv_kr0.3_n0.30
+[push3] 20:06:17 done cuda=1 tag=ag_priv_kr0.5_n0.15
+[push3] wave 3 done
+9 results/phase4_pushauc.jsonl

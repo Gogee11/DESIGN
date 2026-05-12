@@ -1,0 +1,37 @@
+[p9] 22:21:51 [slot 0/cuda 0] start #0 model=lightgcn_agr tag=m3_emb24_b0s0
+[p9] 22:21:51 [slot 1/cuda 0] start #1 model=lightgcn_agr tag=m3_emb12_b0s0
+[p9] 22:21:51 [slot 3/cuda 1] start #2 model=lightgcn_agr_adv tag=m4_adv0.02_p12
+[p9] 22:21:51 [slot 6/cuda 3] start #3 model=lightgcn_agr_adv tag=m4_adv0.1_p12
+[p9] 22:21:51 [slot 4/cuda 2] start #4 model=lightgcn_agr_adv tag=m4_adv0.05_lam0.5_p12
+[p9] 22:21:51 [slot 5/cuda 2] start #5 model=lightgcn_agr_conf tag=m1_conf_w0.3_p12
+[p9] 22:21:51 [slot 2/cuda 1] start #6 model=lightgcn_agr_conf tag=m1_conf_w1.0_p12
+[p9] [slot 7] queue empty; exiting
+[p9] 23:13:39 [slot 0] DONE #0 m3_emb24_b0s0
+[p9] [slot 0] queue empty; exiting
+[p9] 23:22:29 [slot 1] DONE #1 m3_emb12_b0s0
+[p9] [slot 1] queue empty; exiting
+[p9] 23:57:05 [slot 3] DONE #2 m4_adv0.02_p12
+[p9] [slot 3] queue empty; exiting
+[p9] 23:57:08 [slot 5] DONE #5 m1_conf_w0.3_p12
+[p9] [slot 5] queue empty; exiting
+[p9] 23:57:09 [slot 6] DONE #3 m4_adv0.1_p12
+[p9] [slot 6] queue empty; exiting
+[p9] 23:57:10 [slot 2] DONE #6 m1_conf_w1.0_p12
+[p9] [slot 2] queue empty; exiting
+[p9] 23:57:12 [slot 4] DONE #4 m4_adv0.05_lam0.5_p12
+[p9] [slot 4] queue empty; exiting
+[p9] 23:57:12 ALL DONE
+7 results/phase9_refine.jsonl
+[p9-eval] 23:57:12 eval-only sweep on phase 8 emb=16 ckpt
+[eval_only] recall=[0.08888364 0.14196471 0.21947238]  ndcg=[0.07421537 0.09370162 0.1176225 ]
+[eval_only] MIA AUC=0.8455
+[eval_only] recall=[0.08781269 0.14225706 0.21846177]  ndcg=[0.07347902 0.09361289 0.11713542]
+[eval_only] MIA AUC=0.8449
+[eval_only] recall=[0.08547049 0.13922755 0.21891026]  ndcg=[0.07145135 0.09143216 0.11584271]
+[eval_only] MIA AUC=0.8437
+[eval_only] recall=[0.08606501 0.13885533 0.21043566]  ndcg=[0.07191826 0.09125192 0.1132414 ]
+[eval_only] MIA AUC=0.8407
+[eval_only] recall=[0.07844004 0.12954654 0.20335354]  ndcg=[0.06745031 0.0863043  0.10888114]
+[eval_only] MIA AUC=0.8358
+[p9-eval] done
+5 results/phase9_eval_combo.jsonl

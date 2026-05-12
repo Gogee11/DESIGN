@@ -1,0 +1,15 @@
+[push] 18:40:04 start cuda=2 model=lightgcn_agr_priv tag=ag_priv_n0.15 args=--priv_noise_std 0.15
+[push] 18:40:04 start cuda=1 model=lightgcn_agr_priv tag=ag_priv_n0.05 args=--priv_noise_std 0.05
+[push] 18:40:04 start cuda=3 model=lightgcn_agr_priv tag=ag_priv_n0.30 args=--priv_noise_std 0.30
+[push] 18:54:00 done cuda=3 tag=ag_priv_n0.30
+[push] 18:58:11 done cuda=2 tag=ag_priv_n0.15
+[push] 19:05:25 done cuda=1 tag=ag_priv_n0.05
+[push] 19:05:25 start cuda=3 model=lightgcn_agr_priv tag=ag_priv_n0.50 args=--priv_noise_std 0.50
+[push] 19:05:25 start cuda=1 model=lightgcn_agr tag=ag_kr0.5 args=--keep_rate 0.5 --beta 0.0 --str_weight 0.0
+[push] 19:05:25 start cuda=2 model=lightgcn_agr tag=ag_kr0.3 args=--keep_rate 0.3 --beta 0.0 --str_weight 0.0
+[push] 19:11:34 done cuda=1 tag=ag_kr0.5
+[push] 19:12:10 done cuda=2 tag=ag_kr0.3
+[push] 19:14:04 done cuda=3 tag=ag_priv_n0.50
+[push] all cells done
+-rw-r--r-- 1 root root 4065 May  9 19:13 results/phase4_pushauc.jsonl
+6 results/phase4_pushauc.jsonl

@@ -1,0 +1,34 @@
+[p14] 02:59:08 [slot 0/cuda 0] start #0 model=lightgcn_agr tag=p14a_agrdef_seed2026
+[p14] 02:59:08 [slot 1/cuda 0] start #1 model=lightgcn_agr tag=p14a_agrdef_seed2027
+[p14] 02:59:08 [slot 2/cuda 1] start #2 model=lightgcn_agr_conf tag=p14a_m1conf01_seed2026
+[p14] 02:59:08 [slot 3/cuda 1] start #3 model=lightgcn_agr_conf tag=p14a_m1conf01_seed2027
+[p14] 02:59:08 [slot 4/cuda 2] start #4 model=lightgcn_agr tag=p14a_emb16b0s0_seed2026
+[p14] 02:59:08 [slot 6/cuda 3] start #5 model=lightgcn_agr tag=p14a_emb16b0s0_seed2027
+[p14] 02:59:09 [slot 5/cuda 2] start #6 model=lightgcn_agr_conf tag=p14b_emb16_conf01
+[p14] 02:59:09 [slot 7/cuda 3] start #7 model=lightgcn_agr_conf tag=p14b_emb16_conf05
+[p14] 03:41:47 [slot 0] DONE #0 p14a_agrdef_seed2026
+[p14] 03:41:47 [slot 0/cuda 0] start #8 model=lightgcn_agr_conf tag=p14b_emb12_conf03
+[p14] 03:47:08 [slot 1] DONE #1 p14a_agrdef_seed2027
+[p14] 03:47:08 [slot 1/cuda 0] start #9 model=lightgcn_agr_conf tag=p14b_emb24_conf03
+[p14] 04:09:11 [slot 4] DONE #4 p14a_emb16b0s0_seed2026
+[p14] 04:09:11 [slot 4/cuda 2] start #10 model=lightgcn_agr tag=p14c_emb4_b0s0
+[p14] 04:09:22 [slot 6] DONE #5 p14a_emb16b0s0_seed2027
+[p14] 04:09:22 [slot 6/cuda 3] start #11 model=lightgcn_agr tag=p14c_emb6_b0s0
+[p14] 04:48:08 [slot 4] DONE #10 p14c_emb4_b0s0
+[p14] [slot 4] queue empty
+[p14] 05:04:19 [slot 5] DONE #6 p14b_emb16_conf01
+[p14] 05:04:20 [slot 7] DONE #7 p14b_emb16_conf05
+[p14] [slot 5] queue empty
+[p14] [slot 7] queue empty
+[p14] 05:04:23 [slot 2] DONE #2 p14a_m1conf01_seed2026
+[p14] 05:04:23 [slot 3] DONE #3 p14a_m1conf01_seed2027
+[p14] [slot 2] queue empty
+[p14] [slot 3] queue empty
+[p14] 05:04:59 [slot 6] DONE #11 p14c_emb6_b0s0
+[p14] [slot 6] queue empty
+[p14] 05:11:21 [slot 0] DONE #8 p14b_emb12_conf03
+[p14] [slot 0] queue empty
+[p14] 05:13:01 [slot 1] DONE #9 p14b_emb24_conf03
+[p14] [slot 1] queue empty
+[p14] 05:13:01 ALL DONE
+12 results/phase14_extra.jsonl
