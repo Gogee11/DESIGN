@@ -1,0 +1,63 @@
+{
+  "model": "lightgcn_agr",
+  "dataset": "luxury",
+  "seed": 2025,
+  "run": {
+    "timestamp": "20260509_153353",
+    "tag": null,
+    "id": "20260509_153353"
+  },
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.001,
+    "weight_decay": 0
+  },
+  "train": {
+    "epoch": 200,
+    "batch_size": 2048,
+    "save_model": true,
+    "loss": "pairwise",
+    "test_step": 3,
+    "reproducible": true,
+    "seed": 2025,
+    "patience": 5
+  },
+  "test": {
+    "metrics": [
+      "recall",
+      "ndcg"
+    ],
+    "k": [
+      5,
+      10,
+      20
+    ],
+    "batch_size": 1024
+  },
+  "best_epoch": 78,
+  "best_recall": 0.3927641448045405,
+  "validation_result": {
+    "recall": [
+      0.29729683082939473,
+      0.33804836731464927,
+      0.3927641448045405
+    ],
+    "ndcg": [
+      0.23134389633758773,
+      0.24501101233965208,
+      0.25999184851732465
+    ]
+  },
+  "test_result": {
+    "recall": [
+      0.3066243091085982,
+      0.34823012154119776,
+      0.4005666106608762
+    ],
+    "ndcg": [
+      0.253861295248608,
+      0.2683092918626887,
+      0.2832043608451264
+    ]
+  }
+}

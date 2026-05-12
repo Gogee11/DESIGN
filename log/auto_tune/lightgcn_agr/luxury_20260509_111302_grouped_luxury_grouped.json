@@ -1,0 +1,453 @@
+{
+  "run_timestamp": "20260509_111302",
+  "mode": "grouped",
+  "dataset": "luxury",
+  "device": "cuda",
+  "cuda": "0",
+  "seed": 2026,
+  "privacy_weight": 0.25,
+  "utility_metric": "recall",
+  "utility_k_index": -1,
+  "member_limit": 20000,
+  "nonmember_limit": 20000,
+  "nonmember_source": "mixed",
+  "test_size": 0.3,
+  "attack_seed": 42,
+  "tag_prefix": "grouped_luxury",
+  "grouped_results": [
+    {
+      "tag": "grouped_luxury_luxury_group_baseline",
+      "label": "group_baseline",
+      "params": {},
+      "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111302_grouped_luxury_luxury_group_baseline.pth",
+      "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111302_grouped_luxury_luxury_group_baseline.json",
+      "mia_result_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111302_grouped_luxury_luxury_group_baseline-20260509_111440-grouped_luxury_luxury_group_baseline.json",
+      "utility_metric": "recall",
+      "utility_value": 0.42243055742662977,
+      "mia_auc": 0.9325574122615408,
+      "score": 0.3142912043612446,
+      "training_meta": {
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "seed": 2026,
+        "run": {
+          "timestamp": "20260509_111302",
+          "tag": "grouped_luxury_luxury_group_baseline",
+          "id": "20260509_111302_grouped_luxury_luxury_group_baseline"
+        },
+        "optimizer": {
+          "name": "adam",
+          "lr": 0.001,
+          "weight_decay": 0
+        },
+        "train": {
+          "epoch": 100,
+          "batch_size": 2048,
+          "save_model": true,
+          "loss": "pairwise",
+          "test_step": 3,
+          "reproducible": true,
+          "seed": 2026,
+          "patience": 2
+        },
+        "test": {
+          "metrics": [
+            "recall",
+            "ndcg"
+          ],
+          "k": [
+            5,
+            10,
+            20
+          ],
+          "batch_size": 1024
+        },
+        "best_epoch": 54,
+        "best_recall": 0.40791591770569513,
+        "validation_result": {
+          "recall": [
+            0.3006131963056942,
+            0.3516080405198294,
+            0.40791591770569513
+          ],
+          "ndcg": [
+            0.23645616172583203,
+            0.2537584717491553,
+            0.26906241084306376
+          ]
+        },
+        "test_result": {
+          "recall": [
+            0.31728336761722464,
+            0.3683819729774168,
+            0.42243055742662977
+          ],
+          "ndcg": [
+            0.2619134571494815,
+            0.2792960511257941,
+            0.29469528107506654
+          ]
+        }
+      },
+      "mia_result": {
+        "run_timestamp": "2026-05-09 11:14:40",
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "device": "cuda",
+        "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111302_grouped_luxury_luxury_group_baseline.pth",
+        "attack_args": {
+          "member_limit": 20000,
+          "nonmember_limit": 20000,
+          "nonmember_source": "mixed",
+          "test_size": 0.3,
+          "attack_seed": 42,
+          "attack_tag": "grouped_luxury_luxury_group_baseline"
+        },
+        "member_count": 15260,
+        "nonmember_count": 20000,
+        "metrics": {
+          "auc": 0.9325574122615408,
+          "acc": 0.839194554736245,
+          "precision": 0.7600795516181522,
+          "recall": 0.9183049366535605,
+          "f1": 0.8317340983282224,
+          "train_size": 24682,
+          "test_size": 10578
+        },
+        "privacy_risk": "Very high privacy leakage risk",
+        "log_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111302_grouped_luxury_luxury_group_baseline-20260509_111440-grouped_luxury_luxury_group_baseline.log"
+      }
+    },
+    {
+      "tag": "grouped_luxury_luxury_group_train_control",
+      "label": "group_train_control",
+      "params": {
+        "train_batch_size": 1024,
+        "train_patience": 1,
+        "train_test_step": 1,
+        "keep_rate": 0.7,
+        "beta": 10.0,
+        "reg_weight": 5e-06
+      },
+      "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111442_grouped_luxury_luxury_group_train_control.pth",
+      "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111442_grouped_luxury_luxury_group_train_control.json",
+      "mia_result_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111442_grouped_luxury_luxury_group_train_control-20260509_111616-grouped_luxury_luxury_group_train_control.json",
+      "utility_metric": "recall",
+      "utility_value": 0.4172396771277368,
+      "mia_auc": 0.938998616572011,
+      "score": 0.30749002298473405,
+      "training_meta": {
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "seed": 2026,
+        "run": {
+          "timestamp": "20260509_111442",
+          "tag": "grouped_luxury_luxury_group_train_control",
+          "id": "20260509_111442_grouped_luxury_luxury_group_train_control"
+        },
+        "optimizer": {
+          "name": "adam",
+          "lr": 0.001,
+          "weight_decay": 0
+        },
+        "train": {
+          "epoch": 100,
+          "batch_size": 1024,
+          "save_model": true,
+          "loss": "pairwise",
+          "test_step": 1,
+          "reproducible": true,
+          "seed": 2026,
+          "patience": 1
+        },
+        "test": {
+          "metrics": [
+            "recall",
+            "ndcg"
+          ],
+          "k": [
+            5,
+            10,
+            20
+          ],
+          "batch_size": 1024
+        },
+        "best_epoch": 32,
+        "best_recall": 0.4050797992883731,
+        "validation_result": {
+          "recall": [
+            0.2932767790970593,
+            0.3457456241050635,
+            0.4050797992883731
+          ],
+          "ndcg": [
+            0.23052376479737785,
+            0.24819495301011935,
+            0.2644330504830248
+          ]
+        },
+        "test_result": {
+          "recall": [
+            0.3140075484144612,
+            0.3614997175876987,
+            0.4172396771277368
+          ],
+          "ndcg": [
+            0.2594369722782763,
+            0.27590465410709447,
+            0.29165293164495965
+          ]
+        }
+      },
+      "mia_result": {
+        "run_timestamp": "2026-05-09 11:16:16",
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "device": "cuda",
+        "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111442_grouped_luxury_luxury_group_train_control.pth",
+        "attack_args": {
+          "member_limit": 20000,
+          "nonmember_limit": 20000,
+          "nonmember_source": "mixed",
+          "test_size": 0.3,
+          "attack_seed": 42,
+          "attack_tag": "grouped_luxury_luxury_group_train_control"
+        },
+        "member_count": 15260,
+        "nonmember_count": 20000,
+        "metrics": {
+          "auc": 0.938998616572011,
+          "acc": 0.8512951408583853,
+          "precision": 0.7830099830476549,
+          "recall": 0.9080384447356924,
+          "f1": 0.8409021948012542,
+          "train_size": 24682,
+          "test_size": 10578
+        },
+        "privacy_risk": "Very high privacy leakage risk",
+        "log_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111442_grouped_luxury_luxury_group_train_control-20260509_111616-grouped_luxury_luxury_group_train_control.log"
+      }
+    },
+    {
+      "tag": "grouped_luxury_luxury_group_distill",
+      "label": "group_distill",
+      "params": {
+        "prf_weight": 0.1,
+        "str_weight": 1.3,
+        "alpha": 0.3
+      },
+      "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111617_grouped_luxury_luxury_group_distill.pth",
+      "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111617_grouped_luxury_luxury_group_distill.json",
+      "mia_result_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111617_grouped_luxury_luxury_group_distill-20260509_111732-grouped_luxury_luxury_group_distill.json",
+      "utility_metric": "recall",
+      "utility_value": 0.43132822561337875,
+      "mia_auc": 0.9324916994320662,
+      "score": 0.3232053007553622,
+      "training_meta": {
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "seed": 2026,
+        "run": {
+          "timestamp": "20260509_111617",
+          "tag": "grouped_luxury_luxury_group_distill",
+          "id": "20260509_111617_grouped_luxury_luxury_group_distill"
+        },
+        "optimizer": {
+          "name": "adam",
+          "lr": 0.001,
+          "weight_decay": 0
+        },
+        "train": {
+          "epoch": 100,
+          "batch_size": 2048,
+          "save_model": true,
+          "loss": "pairwise",
+          "test_step": 3,
+          "reproducible": true,
+          "seed": 2026,
+          "patience": 2
+        },
+        "test": {
+          "metrics": [
+            "recall",
+            "ndcg"
+          ],
+          "k": [
+            5,
+            10,
+            20
+          ],
+          "batch_size": 1024
+        },
+        "best_epoch": 72,
+        "best_recall": 0.4153879905322609,
+        "validation_result": {
+          "recall": [
+            0.309260260517474,
+            0.3580884315220671,
+            0.4153879905322609
+          ],
+          "ndcg": [
+            0.23985662646383554,
+            0.2563485990309339,
+            0.2718910120163929
+          ]
+        },
+        "test_result": {
+          "recall": [
+            0.3237189216765022,
+            0.3738938870910591,
+            0.43132822561337875
+          ],
+          "ndcg": [
+            0.26726713951043574,
+            0.2848498990104018,
+            0.3011045503337618
+          ]
+        }
+      },
+      "mia_result": {
+        "run_timestamp": "2026-05-09 11:17:32",
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "device": "cuda",
+        "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111617_grouped_luxury_luxury_group_distill.pth",
+        "attack_args": {
+          "member_limit": 20000,
+          "nonmember_limit": 20000,
+          "nonmember_source": "mixed",
+          "test_size": 0.3,
+          "attack_seed": 42,
+          "attack_tag": "grouped_luxury_luxury_group_distill"
+        },
+        "member_count": 15260,
+        "nonmember_count": 20000,
+        "metrics": {
+          "auc": 0.9324916994320662,
+          "acc": 0.8413688788050672,
+          "precision": 0.7634447674418605,
+          "recall": 0.9178680646570555,
+          "f1": 0.8335647688950605,
+          "train_size": 24682,
+          "test_size": 10578
+        },
+        "privacy_risk": "Very high privacy leakage risk",
+        "log_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111617_grouped_luxury_luxury_group_distill-20260509_111732-grouped_luxury_luxury_group_distill.log"
+      }
+    },
+    {
+      "tag": "grouped_luxury_luxury_group_train_control_distill",
+      "label": "group_train_control_distill",
+      "params": {
+        "train_batch_size": 1024,
+        "train_patience": 1,
+        "train_test_step": 1,
+        "keep_rate": 0.7,
+        "beta": 10.0,
+        "reg_weight": 5e-06,
+        "prf_weight": 0.1,
+        "str_weight": 1.3,
+        "alpha": 0.3
+      },
+      "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111733_grouped_luxury_luxury_group_train_control_distill.pth",
+      "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111733_grouped_luxury_luxury_group_train_control_distill.json",
+      "mia_result_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111733_grouped_luxury_luxury_group_train_control_distill-20260509_111803-grouped_luxury_luxury_group_train_control_distill.json",
+      "utility_metric": "recall",
+      "utility_value": 0.37010458846672517,
+      "mia_auc": 0.9019453910004369,
+      "score": 0.26961824071661594,
+      "training_meta": {
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "seed": 2026,
+        "run": {
+          "timestamp": "20260509_111733",
+          "tag": "grouped_luxury_luxury_group_train_control_distill",
+          "id": "20260509_111733_grouped_luxury_luxury_group_train_control_distill"
+        },
+        "optimizer": {
+          "name": "adam",
+          "lr": 0.001,
+          "weight_decay": 0
+        },
+        "train": {
+          "epoch": 100,
+          "batch_size": 1024,
+          "save_model": true,
+          "loss": "pairwise",
+          "test_step": 1,
+          "reproducible": true,
+          "seed": 2026,
+          "patience": 1
+        },
+        "test": {
+          "metrics": [
+            "recall",
+            "ndcg"
+          ],
+          "k": [
+            5,
+            10,
+            20
+          ],
+          "batch_size": 1024
+        },
+        "best_epoch": 8,
+        "best_recall": 0.3597061574802713,
+        "validation_result": {
+          "recall": [
+            0.24845470169048073,
+            0.29402462976246985,
+            0.3597061574802713
+          ],
+          "ndcg": [
+            0.18943966897058828,
+            0.20460890710980376,
+            0.22212777528346794
+          ]
+        },
+        "test_result": {
+          "recall": [
+            0.26160695447812493,
+            0.3045779411156473,
+            0.37010458846672517
+          ],
+          "ndcg": [
+            0.2155235199863939,
+            0.23065015688336327,
+            0.24902148573593552
+          ]
+        }
+      },
+      "mia_result": {
+        "run_timestamp": "2026-05-09 11:18:03",
+        "model": "lightgcn_agr",
+        "dataset": "luxury",
+        "device": "cuda",
+        "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-luxury-2026-20260509_111733_grouped_luxury_luxury_group_train_control_distill.pth",
+        "attack_args": {
+          "member_limit": 20000,
+          "nonmember_limit": 20000,
+          "nonmember_source": "mixed",
+          "test_size": 0.3,
+          "attack_seed": 42,
+          "attack_tag": "grouped_luxury_luxury_group_train_control_distill"
+        },
+        "member_count": 15260,
+        "nonmember_count": 20000,
+        "metrics": {
+          "auc": 0.9019453910004369,
+          "acc": 0.8077141236528644,
+          "precision": 0.7342541436464088,
+          "recall": 0.8709043250327654,
+          "f1": 0.7967625899280576,
+          "train_size": 24682,
+          "test_size": 10578
+        },
+        "privacy_risk": "Very high privacy leakage risk",
+        "log_path": "log\\mia\\lightgcn_agr\\luxury-lightgcn_agr-luxury-2026-20260509_111733_grouped_luxury_luxury_group_train_control_distill-20260509_111803-grouped_luxury_luxury_group_train_control_distill.log"
+      }
+    }
+  ],
+  "failures": []
+}

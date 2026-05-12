@@ -1,0 +1,16 @@
+Checkpoint: checkpoint\lightgcn_agr\lightgcn_agr-digital_music-2026-20260510_013850_autotune_digital_digital_music_s04_prf_weight_0p08.pth
+Attack log : log\mia\lightgcn_agr\digital_music-lightgcn_agr-digital_music-2026-20260510_013850_autotune_digital_digital_music_s04_prf_weight_0p08-20260510_014429-autotune_digital_digital_music_s04_prf_weight_0p08.log
+Attack json: log\mia\lightgcn_agr\digital_music-lightgcn_agr-digital_music-2026-20260510_013850_autotune_digital_digital_music_s04_prf_weight_0p08-20260510_014429-autotune_digital_digital_music_s04_prf_weight_0p08.json
+Members     : 20000
+Non-members : 20000 (mixed)
+
+==== Attack Result ====
+AUC       : 0.8284
+ACC       : 0.7398
+Precision : 0.7198
+Recall    : 0.7853
+F1        : 0.7512
+Train/Test: 28000/12000
+
+==== Privacy Risk Interpretation ====
+High privacy leakage risk

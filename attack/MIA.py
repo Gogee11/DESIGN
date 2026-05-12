@@ -1,6 +1,8 @@
 import argparse
 import inspect
+import json
 import os
+import datetime
 
 import numpy as np
 import torch
@@ -28,20 +30,20 @@ def parse_args():
     parser.add_argument(
         "--member_limit",
         type=int,
-        default=50000,
+        default=20000,
         help="Maximum number of member interactions used by the attack",
     )
     parser.add_argument(
         "--nonmember_limit",
         type=int,
-        default=50000,
+        default=20000,
         help="Maximum number of non-member interactions used by the attack",
     )
     parser.add_argument(
         "--nonmember_source",
         type=str,
         choices=["heldout", "random", "mixed"],
-        default="mixed",
+        default="heldout",
         help="Source of non-member interactions",
     )
     parser.add_argument(
@@ -55,6 +57,12 @@ def parse_args():
         type=int,
         default=42,
         help="Random seed used by the attack pipeline",
+    )
+    parser.add_argument(
+        "--attack_tag",
+        type=str,
+        default=None,
+        help="Optional tag to identify this MIA run",
     )
     args, _ = parser.parse_known_args()
     return args
@@ -288,6 +296,21 @@ def describe_privacy_risk(auc):
     return "Low privacy leakage risk"
 
 
+def create_attack_log_paths(model_name, dataset_name, checkpoint_path, args):
+    log_dir = os.path.join("log", "mia", model_name)
+    os.makedirs(log_dir, exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    checkpoint_stem = os.path.splitext(os.path.basename(checkpoint_path))[0]
+    tag = args.attack_tag.strip() if args.attack_tag else None
+    file_stem = f"{dataset_name}-{checkpoint_stem}-{timestamp}"
+    if tag:
+        file_stem = f"{file_stem}-{tag}"
+    return (
+        os.path.join(log_dir, f"{file_stem}.log"),
+        os.path.join(log_dir, f"{file_stem}.json"),
+    )
+
+
 def main():
     args = parse_args()
     set_seed(args.attack_seed)
@@ -305,14 +328,23 @@ def main():
     checkpoint_path = args.checkpoint_path or default_checkpoint_path()
     if not os.path.exists(checkpoint_path):
         raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
+    log_path, result_path = create_attack_log_paths(configs["model"]["name"], configs["data"]["name"], checkpoint_path, args)
+
+    printed_lines = []
+
+    def emit(message=""):
+        print(message)
+        printed_lines.append(message)
 
     state_dict = torch.load(checkpoint_path, map_location=configs["device"])
     model.load_state_dict(state_dict)
-    print(f"Checkpoint: {checkpoint_path}")
+    emit(f"Checkpoint: {checkpoint_path}")
+    emit(f"Attack log : {log_path}")
+    emit(f"Attack json: {result_path}")
 
     (member_users, member_items), (nonmember_users, nonmember_items) = build_attack_edges(data_handler, args)
-    print(f"Members     : {len(member_users)}")
-    print(f"Non-members : {len(nonmember_users)} ({args.nonmember_source})")
+    emit(f"Members     : {len(member_users)}")
+    emit(f"Non-members : {len(nonmember_users)} ({args.nonmember_source})")
 
     user_embeds, item_embeds = get_inference_embeddings(model)
 
@@ -330,16 +362,46 @@ def main():
 
     metrics = train_attack_model(features, labels, args.test_size, args.attack_seed)
 
-    print("\n==== Attack Result ====")
-    print(f"AUC       : {metrics['auc']:.4f}")
-    print(f"ACC       : {metrics['acc']:.4f}")
-    print(f"Precision : {metrics['precision']:.4f}")
-    print(f"Recall    : {metrics['recall']:.4f}")
-    print(f"F1        : {metrics['f1']:.4f}")
-    print(f"Train/Test: {metrics['train_size']}/{metrics['test_size']}")
+    emit("\n==== Attack Result ====")
+    emit(f"AUC       : {metrics['auc']:.4f}")
+    emit(f"ACC       : {metrics['acc']:.4f}")
+    emit(f"Precision : {metrics['precision']:.4f}")
+    emit(f"Recall    : {metrics['recall']:.4f}")
+    emit(f"F1        : {metrics['f1']:.4f}")
+    emit(f"Train/Test: {metrics['train_size']}/{metrics['test_size']}")
 
-    print("\n==== Privacy Risk Interpretation ====")
-    print(describe_privacy_risk(metrics["auc"]))
+    risk = describe_privacy_risk(metrics["auc"])
+    emit("\n==== Privacy Risk Interpretation ====")
+    emit(risk)
+
+    with open(log_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(printed_lines) + "\n")
+    with open(result_path, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "run_timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "model": configs["model"]["name"],
+                "dataset": configs["data"]["name"],
+                "device": configs["device"],
+                "checkpoint_path": checkpoint_path,
+                "attack_args": {
+                    "member_limit": args.member_limit,
+                    "nonmember_limit": args.nonmember_limit,
+                    "nonmember_source": args.nonmember_source,
+                    "test_size": args.test_size,
+                    "attack_seed": args.attack_seed,
+                    "attack_tag": args.attack_tag,
+                },
+                "member_count": int(len(member_users)),
+                "nonmember_count": int(len(nonmember_users)),
+                "metrics": metrics,
+                "privacy_risk": risk,
+                "log_path": log_path,
+            },
+            f,
+            indent=2,
+            ensure_ascii=False,
+        )
 
 
 if __name__ == "__main__":

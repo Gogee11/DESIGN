@@ -1,0 +1,14 @@
+{
+  "num_users": 3819,
+  "num_items": 1581,
+  "total_lines": 34278,
+  "valid_interactions": 34278,
+  "trn_interactions": 15260,
+  "val_interactions": 5890,
+  "tst_interactions": 6924,
+  "src_file": "data/luxury/Luxury_Beauty_5.json",
+  "min_rating": 1.0,
+  "train_ratio": 0.6,
+  "val_ratio": 0.2,
+  "seed": 2025
+}

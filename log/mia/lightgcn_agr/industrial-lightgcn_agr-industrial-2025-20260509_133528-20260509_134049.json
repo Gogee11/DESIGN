@@ -1,0 +1,28 @@
+{
+  "run_timestamp": "2026-05-09 13:40:49",
+  "model": "lightgcn_agr",
+  "dataset": "industrial",
+  "device": "cuda",
+  "checkpoint_path": "checkpoint/lightgcn_agr/lightgcn_agr-industrial-2025-20260509_133528.pth",
+  "attack_args": {
+    "member_limit": 10000,
+    "nonmember_limit": 10000,
+    "nonmember_source": "mixed",
+    "test_size": 0.3,
+    "attack_seed": 42,
+    "attack_tag": null
+  },
+  "member_count": 10000,
+  "nonmember_count": 10000,
+  "metrics": {
+    "auc": 0.95539,
+    "acc": 0.8878333333333334,
+    "precision": 0.8630265210608424,
+    "recall": 0.922,
+    "f1": 0.891539081385979,
+    "train_size": 14000,
+    "test_size": 6000
+  },
+  "privacy_risk": "Very high privacy leakage risk",
+  "log_path": "log\\mia\\lightgcn_agr\\industrial-lightgcn_agr-industrial-2025-20260509_133528-20260509_134049.log"
+}

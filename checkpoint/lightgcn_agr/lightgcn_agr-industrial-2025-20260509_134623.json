@@ -1,0 +1,63 @@
+{
+  "model": "lightgcn_agr",
+  "dataset": "industrial",
+  "seed": 2025,
+  "run": {
+    "timestamp": "20260509_134623",
+    "tag": null,
+    "id": "20260509_134623"
+  },
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.001,
+    "weight_decay": 0
+  },
+  "train": {
+    "epoch": 200,
+    "batch_size": 4096,
+    "save_model": true,
+    "loss": "pairwise",
+    "test_step": 3,
+    "reproducible": true,
+    "seed": 2025,
+    "patience": 5
+  },
+  "test": {
+    "metrics": [
+      "recall",
+      "ndcg"
+    ],
+    "k": [
+      5,
+      10,
+      20
+    ],
+    "batch_size": 1024
+  },
+  "best_epoch": 27,
+  "best_recall": 0.1573676463123699,
+  "validation_result": {
+    "recall": [
+      0.08781635449977157,
+      0.11838521612390959,
+      0.1573676463123699
+    ],
+    "ndcg": [
+      0.06718167996895381,
+      0.07747624672517747,
+      0.08793934918489844
+    ]
+  },
+  "test_result": {
+    "recall": [
+      0.08971456317937614,
+      0.11895215955536578,
+      0.15739236007780522
+    ],
+    "ndcg": [
+      0.07295121427454529,
+      0.08371207235979579,
+      0.09481977906423572
+    ]
+  }
+}

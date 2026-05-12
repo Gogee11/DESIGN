@@ -1,0 +1,16 @@
+Checkpoint: checkpoint/lightgcn_agr/lightgcn_agr-luxury-2026-20260508_112549_autotune_luxury_luxury_s06_str_weight_1p5.pth
+Attack log : log\mia\lightgcn_agr\luxury-lightgcn_agr-luxury-2026-20260508_112549_autotune_luxury_luxury_s06_str_weight_1p5-20260508_114721.log
+Attack json: log\mia\lightgcn_agr\luxury-lightgcn_agr-luxury-2026-20260508_112549_autotune_luxury_luxury_s06_str_weight_1p5-20260508_114721.json
+Members     : 15260
+Non-members : 20000 (mixed)
+
+==== Attack Result ====
+AUC       : 0.8862
+ACC       : 0.7890
+Precision : 0.7059
+Recall    : 0.8785
+F1        : 0.7828
+Train/Test: 24682/10578
+
+==== Privacy Risk Interpretation ====
+High privacy leakage risk

@@ -1,0 +1,28 @@
+{
+  "run_timestamp": "2026-05-10 12:28:08",
+  "model": "lightgcn_agr",
+  "dataset": "digital_music",
+  "device": "cuda",
+  "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260510_122321_autotune_digital_clean_digital_music_s01_reg_weight_1em05.pth",
+  "attack_args": {
+    "member_limit": 20000,
+    "nonmember_limit": 20000,
+    "nonmember_source": "mixed",
+    "test_size": 0.3,
+    "attack_seed": 42,
+    "attack_tag": "autotune_digital_clean_digital_music_s01_reg_weight_1em05"
+  },
+  "member_count": 20000,
+  "nonmember_count": 20000,
+  "metrics": {
+    "auc": 0.8365545555555556,
+    "acc": 0.7465833333333334,
+    "precision": 0.7253617669459254,
+    "recall": 0.7936666666666666,
+    "f1": 0.7579785117389575,
+    "train_size": 28000,
+    "test_size": 12000
+  },
+  "privacy_risk": "High privacy leakage risk",
+  "log_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260510_122321_autotune_digital_clean_digital_music_s01_reg_weight_1em05-20260510_122807-autotune_digital_clean_digital_music_s01_reg_weight_1em05.log"
+}

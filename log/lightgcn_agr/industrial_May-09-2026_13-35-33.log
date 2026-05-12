@@ -1,0 +1,24 @@
+2026-05-09 13:35:33,347 - {'optimizer': {'name': 'adam', 'lr': 0.001, 'weight_decay': 0}, 'train': {'epoch': 200, 'batch_size': 4096, 'save_model': True, 'loss': 'pairwise', 'test_step': 3, 'reproducible': True, 'seed': 2025, 'patience': 5}, 'test': {'metrics': ['recall', 'ndcg'], 'k': [5, 10, 20], 'batch_size': 1024}, 'data': {'type': 'general_cf', 'name': 'industrial', 'user_num': 11041, 'item_num': 5334}, 'model': {'name': 'lightgcn_agr', 'embedding_size': 32, 'edge_bias': 0.5, 'keep_rate': 0.8, 'mask_ratio': 0.15, 'recon_weight': 0.2, 're_temperature': 0.2, 'layer_num': 3, 'reg_weight': 1e-07, 'prf_weight': 0.02, 'kd_weight': 0.01, 'kd_temperature': 0.2, 'str_weight': 1.0, 'beta': 5.0, 'sigma': 0.25, 'alpha': 0.1, 'digital_music': {'layer_num': 3, 'reg_weight': 1e-07, 'kd_weight': 0.01, 'kd_temperature': 0.2, 'prf_weight': 0.02, 'str_weight': 1.2, 'beta': 3.5, 'sigma': 0.3, 'alpha': 0.15, 'keep_rate': 0.8}, 'luxury': {'layer_num': 3, 'reg_weight': 1e-07, 'kd_weight': 0.01, 'kd_temperature': 0.2, 'prf_weight': 0.03, 'str_weight': 1.5, 'beta': 4.0, 'sigma': 0.25, 'alpha': 0.2, 'keep_rate': 0.8}, 'steam': {'layer_num': 3, 'reg_weight': 1e-08, 'kd_weight': 0.001, 'kd_temperature': 0.1, 'prf_weight': 0.01, 'str_weight': 1.0, 'beta': 2.5, 'sigma': 0.2, 'alpha': 0.08, 'keep_rate': 0.8}, 'industrial': {'layer_num': 3, 'reg_weight': 1e-06, 'kd_weight': 0.001, 'kd_temperature': 0.2, 'prf_weight': 0.025, 'str_weight': 1.3, 'beta': 4.0, 'sigma': 0.28, 'alpha': 0.18, 'keep_rate': 0.8}}}
+2026-05-09 13:35:41,489 - Epoch 0  [recall@5: 0.0348 recall@10: 0.0425 recall@20: 0.0528 ] [ndcg@5: 0.0288 ndcg@10: 0.0314 ndcg@20: 0.0342 ] 
+2026-05-09 13:35:54,662 - Epoch 3  [recall@5: 0.0759 recall@10: 0.1004 recall@20: 0.1283 ] [ndcg@5: 0.0576 ndcg@10: 0.0658 ndcg@20: 0.0733 ] 
+2026-05-09 13:36:09,355 - Epoch 6  [recall@5: 0.0795 recall@10: 0.1091 recall@20: 0.1453 ] [ndcg@5: 0.0614 ndcg@10: 0.0714 ndcg@20: 0.0811 ] 
+2026-05-09 13:36:20,175 - Epoch 9  [recall@5: 0.0828 recall@10: 0.1132 recall@20: 0.1526 ] [ndcg@5: 0.0634 ndcg@10: 0.0736 ndcg@20: 0.0842 ] 
+2026-05-09 13:36:31,131 - Epoch 12  [recall@5: 0.0863 recall@10: 0.1156 recall@20: 0.1561 ] [ndcg@5: 0.0661 ndcg@10: 0.0760 ndcg@20: 0.0868 ] 
+2026-05-09 13:36:42,109 - Epoch 15  [recall@5: 0.0876 recall@10: 0.1174 recall@20: 0.1589 ] [ndcg@5: 0.0675 ndcg@10: 0.0776 ndcg@20: 0.0887 ] 
+2026-05-09 13:36:53,530 - Epoch 18  [recall@5: 0.0890 recall@10: 0.1195 recall@20: 0.1613 ] [ndcg@5: 0.0686 ndcg@10: 0.0790 ndcg@20: 0.0902 ] 
+2026-05-09 13:37:04,322 - Epoch 21  [recall@5: 0.0901 recall@10: 0.1209 recall@20: 0.1619 ] [ndcg@5: 0.0693 ndcg@10: 0.0797 ndcg@20: 0.0908 ] 
+2026-05-09 13:37:15,179 - Epoch 24  [recall@5: 0.0917 recall@10: 0.1220 recall@20: 0.1628 ] [ndcg@5: 0.0698 ndcg@10: 0.0800 ndcg@20: 0.0910 ] 
+2026-05-09 13:37:25,846 - Epoch 27  [recall@5: 0.0916 recall@10: 0.1238 recall@20: 0.1635 ] [ndcg@5: 0.0698 ndcg@10: 0.0807 ndcg@20: 0.0913 ] 
+2026-05-09 13:37:36,552 - Epoch 30  [recall@5: 0.0916 recall@10: 0.1236 recall@20: 0.1632 ] [ndcg@5: 0.0697 ndcg@10: 0.0806 ndcg@20: 0.0912 ] 
+2026-05-09 13:37:47,228 - Epoch 33  [recall@5: 0.0926 recall@10: 0.1239 recall@20: 0.1643 ] [ndcg@5: 0.0704 ndcg@10: 0.0810 ndcg@20: 0.0918 ] 
+2026-05-09 13:37:58,143 - Epoch 36  [recall@5: 0.0928 recall@10: 0.1238 recall@20: 0.1649 ] [ndcg@5: 0.0705 ndcg@10: 0.0810 ndcg@20: 0.0920 ] 
+2026-05-09 13:38:08,907 - Epoch 39  [recall@5: 0.0935 recall@10: 0.1239 recall@20: 0.1644 ] [ndcg@5: 0.0709 ndcg@10: 0.0813 ndcg@20: 0.0921 ] 
+2026-05-09 13:38:19,590 - Epoch 42  [recall@5: 0.0938 recall@10: 0.1249 recall@20: 0.1636 ] [ndcg@5: 0.0711 ndcg@10: 0.0817 ndcg@20: 0.0921 ] 
+2026-05-09 13:38:29,244 - Epoch 45  [recall@5: 0.0940 recall@10: 0.1252 recall@20: 0.1639 ] [ndcg@5: 0.0711 ndcg@10: 0.0817 ndcg@20: 0.0921 ] 
+2026-05-09 13:38:38,514 - Epoch 48  [recall@5: 0.0950 recall@10: 0.1253 recall@20: 0.1631 ] [ndcg@5: 0.0716 ndcg@10: 0.0818 ndcg@20: 0.0920 ] 
+2026-05-09 13:38:47,818 - Epoch 51  [recall@5: 0.0956 recall@10: 0.1251 recall@20: 0.1630 ] [ndcg@5: 0.0719 ndcg@10: 0.0819 ndcg@20: 0.0921 ] 
+2026-05-09 13:38:49,665 - [recall@5: 0.0928 recall@10: 0.1238 recall@20: 0.1649 ] [ndcg@5: 0.0705 ndcg@10: 0.0810 ndcg@20: 0.0920 ] 
+2026-05-09 13:38:51,353 - [recall@5: 0.0956 recall@10: 0.1251 recall@20: 0.1661 ] [ndcg@5: 0.0770 ndcg@10: 0.0878 ndcg@20: 0.0997 ] 
+2026-05-09 13:38:51,365 - Save model parameters to ./checkpoint/lightgcn_agr/lightgcn_agr-industrial-2025-20260509_133528.pth
+2026-05-09 13:38:51,366 - Save run metadata to ./checkpoint/lightgcn_agr/lightgcn_agr-industrial-2025-20260509_133528.json
+2026-05-09 13:38:51,367 - Best Epoch 36. Final test result: {'recall': array([0.09563341, 0.12506817, 0.16612643]), 'ndcg': array([0.07702285, 0.08780355, 0.09967201])}.

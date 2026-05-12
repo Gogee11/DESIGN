@@ -135,9 +135,9 @@ def main():
             int_rows.append(user2id[u])
             int_cols.append(item2id[i])
 
-    user_items = defaultdict(list)
+    user_items = defaultdict(set)
     for r, c in zip(int_rows, int_cols):
-        user_items[r].append(c)
+        user_items[r].add(c)
 
     np.random.seed(args.seed)
     trn_r, trn_c = [], []
@@ -147,7 +147,7 @@ def main():
     t3 = args.train_ratio + args.val_ratio
 
     for u in range(num_users):
-        items_u = user_items.get(u, [])
+        items_u = list(user_items.get(u, set()))
         if not items_u:
             continue
         perm = np.random.permutation(items_u)
@@ -174,6 +174,12 @@ def main():
     tst_mat = coo_matrix(
         (np.ones(len(tst_r)), (tst_r, tst_c)), shape=(num_users, num_items)
     )
+
+    trn_edges = set(zip(trn_r, trn_c))
+    val_edges = set(zip(val_r, val_c))
+    tst_edges = set(zip(tst_r, tst_c))
+    if trn_edges & val_edges or trn_edges & tst_edges or val_edges & tst_edges:
+        raise RuntimeError("Split overlap detected after preprocessing.")
 
     with open(os.path.join(out_dir, "trn_mat.pkl"), "wb") as f:
         pickle.dump(trn_mat, f)

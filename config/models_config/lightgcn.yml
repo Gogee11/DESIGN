@@ -4,13 +4,13 @@ optimizer:
   weight_decay: 0
 
 train:
-  epoch: 3000
+  epoch: 200
   batch_size: 4096
   save_model: true
   loss: pairwise
   test_step: 3
   reproducible: true
-  seed: 2025
+  seed: 2026
   patience: 5
 
 test:

@@ -12,18 +12,9 @@ import torch.utils.data as data
 class DataHandlerGeneralCF:
     def __init__(self):
         file_pre_dir = os.getcwd()
-        if configs['data']['name'] == 'amazon':
-            data_pre_dir = f'{file_pre_dir}/data/amazon/'
-        elif configs['data']['name'] == 'CD':
-            data_pre_dir = f'{file_pre_dir}/data/CD/'
-        elif configs['data']['name'] == 'digital_music':
-            data_pre_dir = f'{file_pre_dir}/data/digital_music/'
-        elif configs['data']['name'] == 'game':
-            data_pre_dir = f'{file_pre_dir}/data/game/'
-        elif configs['data']['name'] == 'subs':
-            data_pre_dir = f'{file_pre_dir}/data/subs/'
-        else:
-            raise NotImplementedError
+        data_pre_dir = f"{file_pre_dir}/data/{configs['data']['name']}/"
+        if not os.path.isdir(data_pre_dir):
+            raise FileNotFoundError(f"Dataset directory not found: {data_pre_dir}")
         self.trn_file = data_pre_dir + 'trn_mat.pkl'
         self.val_file = data_pre_dir + 'val_mat.pkl'
         self.tst_file = data_pre_dir + 'tst_mat.pkl'

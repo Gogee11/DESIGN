@@ -1,0 +1,16 @@
+Checkpoint: checkpoint/lightgcn_agr/lightgcn_agr-digital_music-2025-20260507_235504.pth
+Attack log : log\mia\lightgcn_agr\digital_music-lightgcn_agr-digital_music-2025-20260507_235504-20260508_130220.log
+Attack json: log\mia\lightgcn_agr\digital_music-lightgcn_agr-digital_music-2025-20260507_235504-20260508_130220.json
+Members     : 37045
+Non-members : 50000 (mixed)
+
+==== Attack Result ====
+AUC       : 0.8812
+ACC       : 0.7843
+Precision : 0.6959
+Recall    : 0.8762
+F1        : 0.7757
+Train/Test: 60931/26114
+
+==== Privacy Risk Interpretation ====
+High privacy leakage risk

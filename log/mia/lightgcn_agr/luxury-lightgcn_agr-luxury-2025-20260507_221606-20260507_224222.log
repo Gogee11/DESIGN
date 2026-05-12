@@ -1,0 +1,16 @@
+Checkpoint: checkpoint/lightgcn_agr/lightgcn_agr-luxury-2025-20260507_221606.pth
+Attack log : log\mia\lightgcn_agr\luxury-lightgcn_agr-luxury-2025-20260507_221606-20260507_224222.log
+Attack json: log\mia\lightgcn_agr\luxury-lightgcn_agr-luxury-2025-20260507_221606-20260507_224222.json
+Members     : 15260
+Non-members : 50000 (mixed)
+
+==== Attack Result ====
+AUC       : 0.7942
+ACC       : 0.7067
+Precision : 0.4280
+Recall    : 0.7558
+F1        : 0.5465
+Train/Test: 45682/19578
+
+==== Privacy Risk Interpretation ====
+Moderate privacy leakage risk

@@ -1,0 +1,14 @@
+{
+  "num_users": 11041,
+  "num_items": 5334,
+  "total_lines": 77071,
+  "valid_interactions": 77071,
+  "trn_interactions": 39838,
+  "val_interactions": 14183,
+  "tst_interactions": 18004,
+  "src_file": "data/industrial/Industrial_and_Scientific_5.json",
+  "min_rating": 1.0,
+  "train_ratio": 0.6,
+  "val_ratio": 0.2,
+  "seed": 2025
+}

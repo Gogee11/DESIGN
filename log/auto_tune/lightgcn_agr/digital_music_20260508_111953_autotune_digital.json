@@ -1,0 +1,426 @@
+{
+  "run_timestamp": "20260508_111953",
+  "dataset": "digital_music",
+  "device": "cuda",
+  "cuda": "0",
+  "seed": 2026,
+  "privacy_weight": 0.25,
+  "utility_metric": "recall",
+  "utility_k_index": -1,
+  "member_limit": 20000,
+  "nonmember_limit": 20000,
+  "nonmember_source": "mixed",
+  "test_size": 0.3,
+  "attack_seed": 42,
+  "tag_prefix": "autotune_digital",
+  "current_best_params": {
+    "reg_weight": 5e-07,
+    "keep_rate": 0.8,
+    "beta": 10.0,
+    "train_patience": 2,
+    "prf_weight": 0.03,
+    "str_weight": 0.8,
+    "alpha": 0.2
+  },
+  "completed_stages": [
+    {
+      "stage_index": 1,
+      "param_name": "reg_weight",
+      "candidate_values": [
+        1e-07,
+        5e-07,
+        1e-06,
+        5e-06,
+        1e-05
+      ],
+      "best_value": 5e-07,
+      "best_score": 0.11233755418372188,
+      "best_utility_value": 0.18786172085038852,
+      "best_mia_auc": 0.8020966666666666,
+      "best_tag": "autotune_digital_digital_music_s01_reg_weight_5em07",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s01_reg_weight_1em07",
+          "param_value": 1e-07,
+          "score": 0.11206907409213188,
+          "utility_value": 0.18759101159213187,
+          "mia_auc": 0.80208775,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_111953_autotune_digital_digital_music_s01_reg_weight_1em07.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_111953_autotune_digital_digital_music_s01_reg_weight_1em07.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_111953_autotune_digital_digital_music_s01_reg_weight_1em07-20260508_112054-autotune_digital_digital_music_s01_reg_weight_1em07.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s01_reg_weight_5em07",
+          "param_value": 5e-07,
+          "score": 0.11233755418372188,
+          "utility_value": 0.18786172085038852,
+          "mia_auc": 0.8020966666666666,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112056_autotune_digital_digital_music_s01_reg_weight_5em07.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112056_autotune_digital_digital_music_s01_reg_weight_5em07.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_112056_autotune_digital_digital_music_s01_reg_weight_5em07-20260508_112201-autotune_digital_digital_music_s01_reg_weight_5em07.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s01_reg_weight_1em06",
+          "param_value": 1e-06,
+          "score": 0.11225074137541405,
+          "utility_value": 0.1877714844309696,
+          "mia_auc": 0.8020829722222222,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112203_autotune_digital_digital_music_s01_reg_weight_1em06.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112203_autotune_digital_digital_music_s01_reg_weight_1em06.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_112203_autotune_digital_digital_music_s01_reg_weight_1em06-20260508_112304-autotune_digital_digital_music_s01_reg_weight_1em06.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s01_reg_weight_5em06",
+          "param_value": 5e-06,
+          "score": 0.11219265507931828,
+          "utility_value": 0.1877173425793183,
+          "mia_auc": 0.8020987500000001,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112306_autotune_digital_digital_music_s01_reg_weight_5em06.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112306_autotune_digital_digital_music_s01_reg_weight_5em06.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_112306_autotune_digital_digital_music_s01_reg_weight_5em06-20260508_112409-autotune_digital_digital_music_s01_reg_weight_5em06.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s01_reg_weight_1em05",
+          "param_value": 1e-05,
+          "score": 0.11209290289860482,
+          "utility_value": 0.18762109039860483,
+          "mia_auc": 0.80211275,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112410_autotune_digital_digital_music_s01_reg_weight_1em05.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112410_autotune_digital_digital_music_s01_reg_weight_1em05.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_112410_autotune_digital_digital_music_s01_reg_weight_1em05-20260508_112525-autotune_digital_digital_music_s01_reg_weight_1em05.json"
+        }
+      ]
+    },
+    {
+      "stage_index": 2,
+      "param_name": "keep_rate",
+      "candidate_values": [
+        0.6,
+        0.7,
+        0.8,
+        0.9
+      ],
+      "best_value": 0.8,
+      "best_score": 0.1630017251180998,
+      "best_utility_value": 0.2327322112292109,
+      "best_mia_auc": 0.7789219444444444,
+      "best_tag": "autotune_digital_digital_music_s02_keep_rate_0p8",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s02_keep_rate_0p6",
+          "param_value": 0.6,
+          "score": 0.11866955379678115,
+          "utility_value": 0.19195097046344783,
+          "mia_auc": 0.7931256666666667,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112527_autotune_digital_digital_music_s02_keep_rate_0p6.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112527_autotune_digital_digital_music_s02_keep_rate_0p6.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_112527_autotune_digital_digital_music_s02_keep_rate_0p6-20260508_112722-autotune_digital_digital_music_s02_keep_rate_0p6.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s02_keep_rate_0p7",
+          "param_value": 0.7,
+          "score": 0.15222641728713154,
+          "utility_value": 0.2201183061760204,
+          "mia_auc": 0.7715675555555555,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112724_autotune_digital_digital_music_s02_keep_rate_0p7.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_112724_autotune_digital_digital_music_s02_keep_rate_0p7.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_112724_autotune_digital_digital_music_s02_keep_rate_0p7-20260508_113051-autotune_digital_digital_music_s02_keep_rate_0p7.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s02_keep_rate_0p8",
+          "param_value": 0.8,
+          "score": 0.1630017251180998,
+          "utility_value": 0.2327322112292109,
+          "mia_auc": 0.7789219444444444,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113053_autotune_digital_digital_music_s02_keep_rate_0p8.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113053_autotune_digital_digital_music_s02_keep_rate_0p8.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_113053_autotune_digital_digital_music_s02_keep_rate_0p8-20260508_113424-autotune_digital_digital_music_s02_keep_rate_0p8.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s02_keep_rate_0p9",
+          "param_value": 0.9,
+          "score": 0.11234048473927741,
+          "utility_value": 0.18786172085038852,
+          "mia_auc": 0.8020849444444444,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113426_autotune_digital_digital_music_s02_keep_rate_0p9.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113426_autotune_digital_digital_music_s02_keep_rate_0p9.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_113426_autotune_digital_digital_music_s02_keep_rate_0p9-20260508_113558-autotune_digital_digital_music_s02_keep_rate_0p9.json"
+        }
+      ]
+    },
+    {
+      "stage_index": 3,
+      "param_name": "beta",
+      "candidate_values": [
+        2.5,
+        5.0,
+        7.5,
+        10.0
+      ],
+      "best_value": 10.0,
+      "best_score": 0.1654153260136963,
+      "best_utility_value": 0.24123069406925185,
+      "best_mia_auc": 0.8032614722222222,
+      "best_tag": "autotune_digital_digital_music_s03_beta_10p0",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s03_beta_2p5",
+          "param_value": 2.5,
+          "score": 0.10841826027827162,
+          "utility_value": 0.17900416305604938,
+          "mia_auc": 0.7823436111111111,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113600_autotune_digital_digital_music_s03_beta_2p5.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113600_autotune_digital_digital_music_s03_beta_2p5.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_113600_autotune_digital_digital_music_s03_beta_2p5-20260508_113726-autotune_digital_digital_music_s03_beta_2p5.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s03_beta_5p0",
+          "param_value": 5.0,
+          "score": 0.16308853792640757,
+          "utility_value": 0.23282244764862978,
+          "mia_auc": 0.7789356388888888,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113728_autotune_digital_digital_music_s03_beta_5p0.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_113728_autotune_digital_digital_music_s03_beta_5p0.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_113728_autotune_digital_digital_music_s03_beta_5p0-20260508_114105-autotune_digital_digital_music_s03_beta_5p0.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s03_beta_7p5",
+          "param_value": 7.5,
+          "score": 0.16473743826251788,
+          "utility_value": 0.2379807021514068,
+          "mia_auc": 0.7929730555555556,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_114107_autotune_digital_digital_music_s03_beta_7p5.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_114107_autotune_digital_digital_music_s03_beta_7p5.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_114107_autotune_digital_digital_music_s03_beta_7p5-20260508_114431-autotune_digital_digital_music_s03_beta_7p5.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s03_beta_10p0",
+          "param_value": 10.0,
+          "score": 0.1654153260136963,
+          "utility_value": 0.24123069406925185,
+          "mia_auc": 0.8032614722222222,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_114433_autotune_digital_digital_music_s03_beta_10p0.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_114433_autotune_digital_digital_music_s03_beta_10p0.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_114433_autotune_digital_digital_music_s03_beta_10p0-20260508_114725-autotune_digital_digital_music_s03_beta_10p0.json"
+        }
+      ]
+    },
+    {
+      "stage_index": 4,
+      "param_name": "train_patience",
+      "candidate_values": [
+        2,
+        3,
+        5
+      ],
+      "best_value": 2,
+      "best_score": 0.16595253608784052,
+      "best_utility_value": 0.24176729997672944,
+      "best_mia_auc": 0.8032590555555557,
+      "best_tag": "autotune_digital_digital_music_s04_train_patience_2",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s04_train_patience_2",
+          "param_value": 2,
+          "score": 0.16595253608784052,
+          "utility_value": 0.24176729997672944,
+          "mia_auc": 0.8032590555555557,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_114727_autotune_digital_digital_music_s04_train_patience_2.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_114727_autotune_digital_digital_music_s04_train_patience_2.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_114727_autotune_digital_digital_music_s04_train_patience_2-20260508_115042-autotune_digital_digital_music_s04_train_patience_2.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s04_train_patience_3",
+          "param_value": 3,
+          "score": 0.16570851474600282,
+          "utility_value": 0.24152250780155837,
+          "mia_auc": 0.8032559722222222,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_115044_autotune_digital_digital_music_s04_train_patience_3.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_115044_autotune_digital_digital_music_s04_train_patience_3.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_115044_autotune_digital_digital_music_s04_train_patience_3-20260508_115403-autotune_digital_digital_music_s04_train_patience_3.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s04_train_patience_5",
+          "param_value": 5,
+          "score": 0.16573745302897636,
+          "utility_value": 0.24154952941786523,
+          "mia_auc": 0.8032483055555555,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_115405_autotune_digital_digital_music_s04_train_patience_5.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_115405_autotune_digital_digital_music_s04_train_patience_5.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_115405_autotune_digital_digital_music_s04_train_patience_5-20260508_115725-autotune_digital_digital_music_s04_train_patience_5.json"
+        }
+      ]
+    },
+    {
+      "stage_index": 5,
+      "param_name": "prf_weight",
+      "candidate_values": [
+        0.01,
+        0.02,
+        0.03,
+        0.05
+      ],
+      "best_value": 0.03,
+      "best_score": 0.16734527695806867,
+      "best_utility_value": 0.2452779019580687,
+      "best_mia_auc": 0.8117305000000001,
+      "best_tag": "autotune_digital_digital_music_s05_prf_weight_0p03",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s05_prf_weight_0p01",
+          "param_value": 0.01,
+          "score": 0.15664497217143,
+          "utility_value": 0.2380868749492078,
+          "mia_auc": 0.8257676111111112,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_115727_autotune_digital_digital_music_s05_prf_weight_0p01.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_115727_autotune_digital_digital_music_s05_prf_weight_0p01.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_115727_autotune_digital_digital_music_s05_prf_weight_0p01-20260508_120046-autotune_digital_digital_music_s05_prf_weight_0p01.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s05_prf_weight_0p02",
+          "param_value": 0.02,
+          "score": 0.16381212350939736,
+          "utility_value": 0.24319272767606406,
+          "mia_auc": 0.8175224166666668,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_120048_autotune_digital_digital_music_s05_prf_weight_0p02.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_120048_autotune_digital_digital_music_s05_prf_weight_0p02.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_120048_autotune_digital_digital_music_s05_prf_weight_0p02-20260508_120415-autotune_digital_digital_music_s05_prf_weight_0p02.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s05_prf_weight_0p03",
+          "param_value": 0.03,
+          "score": 0.16734527695806867,
+          "utility_value": 0.2452779019580687,
+          "mia_auc": 0.8117305000000001,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_120417_autotune_digital_digital_music_s05_prf_weight_0p03.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_120417_autotune_digital_digital_music_s05_prf_weight_0p03.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_120417_autotune_digital_digital_music_s05_prf_weight_0p03-20260508_120730-autotune_digital_digital_music_s05_prf_weight_0p03.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s05_prf_weight_0p05",
+          "param_value": 0.05,
+          "score": 0.16581433153691716,
+          "utility_value": 0.24162773431469492,
+          "mia_auc": 0.803253611111111,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_120731_autotune_digital_digital_music_s05_prf_weight_0p05.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_120731_autotune_digital_digital_music_s05_prf_weight_0p05.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_120731_autotune_digital_digital_music_s05_prf_weight_0p05-20260508_121010-autotune_digital_digital_music_s05_prf_weight_0p05.json"
+        }
+      ]
+    },
+    {
+      "stage_index": 6,
+      "param_name": "str_weight",
+      "candidate_values": [
+        0.8,
+        1.0,
+        1.3,
+        1.5
+      ],
+      "best_value": 0.8,
+      "best_score": 0.1674065734599035,
+      "best_utility_value": 0.24533805957101462,
+      "best_mia_auc": 0.8117259444444445,
+      "best_tag": "autotune_digital_digital_music_s06_str_weight_0p8",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s06_str_weight_0p8",
+          "param_value": 0.8,
+          "score": 0.1674065734599035,
+          "utility_value": 0.24533805957101462,
+          "mia_auc": 0.8117259444444445,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121012_autotune_digital_digital_music_s06_str_weight_0p8.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121012_autotune_digital_digital_music_s06_str_weight_0p8.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_121012_autotune_digital_digital_music_s06_str_weight_0p8-20260508_121241-autotune_digital_digital_music_s06_str_weight_0p8.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s06_str_weight_1p0",
+          "param_value": 1.0,
+          "score": 0.16541773572747961,
+          "utility_value": 0.24352996489414627,
+          "mia_auc": 0.8124489166666666,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121242_autotune_digital_digital_music_s06_str_weight_1p0.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121242_autotune_digital_digital_music_s06_str_weight_1p0.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_121242_autotune_digital_digital_music_s06_str_weight_1p0-20260508_121509-autotune_digital_digital_music_s06_str_weight_1p0.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s06_str_weight_1p3",
+          "param_value": 1.3,
+          "score": 0.16564213364089844,
+          "utility_value": 0.2439971614186762,
+          "mia_auc": 0.813420111111111,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121511_autotune_digital_digital_music_s06_str_weight_1p3.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121511_autotune_digital_digital_music_s06_str_weight_1p3.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_121511_autotune_digital_digital_music_s06_str_weight_1p3-20260508_121737-autotune_digital_digital_music_s06_str_weight_1p3.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s06_str_weight_1p5",
+          "param_value": 1.5,
+          "score": 0.1662894727427062,
+          "utility_value": 0.24479891718715063,
+          "mia_auc": 0.8140377777777777,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121739_autotune_digital_digital_music_s06_str_weight_1p5.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_121739_autotune_digital_digital_music_s06_str_weight_1p5.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_121739_autotune_digital_digital_music_s06_str_weight_1p5-20260508_122018-autotune_digital_digital_music_s06_str_weight_1p5.json"
+        }
+      ]
+    },
+    {
+      "stage_index": 7,
+      "param_name": "alpha",
+      "candidate_values": [
+        0.08,
+        0.1,
+        0.15,
+        0.2
+      ],
+      "best_value": 0.2,
+      "best_score": 0.16728457073401168,
+      "best_utility_value": 0.24521774434512278,
+      "best_mia_auc": 0.8117326944444444,
+      "best_tag": "autotune_digital_digital_music_s07_alpha_0p2",
+      "results": [
+        {
+          "tag": "autotune_digital_digital_music_s07_alpha_0p08",
+          "param_value": 0.08,
+          "score": 0.16009141559265444,
+          "utility_value": 0.24037928364820998,
+          "mia_auc": 0.8211514722222222,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122020_autotune_digital_digital_music_s07_alpha_0p08.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122020_autotune_digital_digital_music_s07_alpha_0p08.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_122020_autotune_digital_digital_music_s07_alpha_0p08-20260508_122304-autotune_digital_digital_music_s07_alpha_0p08.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s07_alpha_0p1",
+          "param_value": 0.1,
+          "score": 0.1630858420846346,
+          "utility_value": 0.2428629809735235,
+          "mia_auc": 0.8191085555555555,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122306_autotune_digital_digital_music_s07_alpha_0p1.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122306_autotune_digital_digital_music_s07_alpha_0p1.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_122306_autotune_digital_digital_music_s07_alpha_0p1-20260508_122552-autotune_digital_digital_music_s07_alpha_0p1.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s07_alpha_0p15",
+          "param_value": 0.15,
+          "score": 0.1647167043851352,
+          "utility_value": 0.2434846766073574,
+          "mia_auc": 0.8150718888888888,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122554_autotune_digital_digital_music_s07_alpha_0p15.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122554_autotune_digital_digital_music_s07_alpha_0p15.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_122554_autotune_digital_digital_music_s07_alpha_0p15-20260508_122839-autotune_digital_digital_music_s07_alpha_0p15.json"
+        },
+        {
+          "tag": "autotune_digital_digital_music_s07_alpha_0p2",
+          "param_value": 0.2,
+          "score": 0.16728457073401168,
+          "utility_value": 0.24521774434512278,
+          "mia_auc": 0.8117326944444444,
+          "checkpoint_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122841_autotune_digital_digital_music_s07_alpha_0p2.pth",
+          "training_meta_path": "checkpoint\\lightgcn_agr\\lightgcn_agr-digital_music-2026-20260508_122841_autotune_digital_digital_music_s07_alpha_0p2.json",
+          "mia_result_path": "log\\mia\\lightgcn_agr\\digital_music-lightgcn_agr-digital_music-2026-20260508_122841_autotune_digital_digital_music_s07_alpha_0p2-20260508_123126-autotune_digital_digital_music_s07_alpha_0p2.json"
+        }
+      ]
+    }
+  ]
+}

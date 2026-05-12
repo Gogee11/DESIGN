@@ -1,0 +1,22 @@
+==== Cold-start Evaluation ====
+Model      : lightgcn_agr
+Dataset    : digital_music
+Split      : test
+Checkpoint : checkpoint/lightgcn_agr/lightgcn_agr-digital_music-2025-20260507_235504.pth
+Log        : log\cold_start\lightgcn_agr\digital_music-test-lightgcn_agr-digital_music-2025-20260507_235504-20260508_003603.log
+JSON       : log\cold_start\lightgcn_agr\digital_music-test-lightgcn_agr-digital_music-2025-20260507_235504-20260508_003603.json
+Buckets    : ['1-3', '4-7', '8-15', '16+']
+
+==== Bucket Results ====
+[1-3] users=2401 avg_train_interactions=3.00
+  recall@5: 0.1072 recall@10: 0.1685 recall@20: 0.2457
+  ndcg@5: 0.0763 ndcg@10: 0.0976 ndcg@20: 0.1187
+[4-7] users=2098 avg_train_interactions=4.96
+  recall@5: 0.0916 recall@10: 0.1537 recall@20: 0.2316
+  ndcg@5: 0.0755 ndcg@10: 0.1006 ndcg@20: 0.1254
+[8-15] users=680 avg_train_interactions=10.56
+  recall@5: 0.0857 recall@10: 0.1388 recall@20: 0.2088
+  ndcg@5: 0.0869 ndcg@10: 0.1131 ndcg@20: 0.1404
+[16+] users=362 avg_train_interactions=33.83
+  recall@5: 0.0667 recall@10: 0.1178 recall@20: 0.1798
+  ndcg@5: 0.1373 ndcg@10: 0.1392 ndcg@20: 0.1600

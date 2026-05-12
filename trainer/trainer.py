@@ -2,6 +2,7 @@ import os
 import time
 import random
 import numpy as np
+import json
 from numpy import random
 from copy import deepcopy
 from tqdm import tqdm
@@ -18,6 +19,10 @@ class Trainer(object):
         self.data_handler = data_handler
         self.logger = logger
         self.metric = Metric()
+        self.best_epoch = None
+        self.best_recall = None
+        self.last_eval_result = None
+        self.last_test_result = None
 
     def create_optimizer(self, model):
         optim_config = configs['optimizer']
@@ -83,12 +88,15 @@ class Trainer(object):
         # evaluation again
         model = build_model(self.data_handler).to(configs['device'])
         model.load_state_dict(best_state_dict)
-        self.evaluate(model)
+        self.last_eval_result = self.evaluate(model)
 
         # final test
         model = build_model(self.data_handler).to(configs['device'])
         model.load_state_dict(best_state_dict)
         test_result = self.test(model)
+        self.best_epoch = best_epoch
+        self.best_recall = best_recall
+        self.last_test_result = test_result
 
         # save result
         self.save_model(model)
@@ -119,23 +127,75 @@ class Trainer(object):
         if configs['train']['save_model']:
             model_state_dict = model.state_dict()
             model_name = configs['model']['name']
+            dataset_name = configs['data']['name']
+            seed = configs['train']['seed']
+            run_id = configs.get('run', {}).get('id')
+
+            def make_json_safe(obj):
+                if isinstance(obj, dict):
+                    return {key: make_json_safe(value) for key, value in obj.items()}
+                if isinstance(obj, (list, tuple)):
+                    return [make_json_safe(value) for value in obj]
+                if isinstance(obj, np.ndarray):
+                    return obj.tolist()
+                if isinstance(obj, np.generic):
+                    return obj.item()
+                return obj
+
             if not configs['tune']['enable']:
                 save_dir_path = './checkpoint/{}'.format(model_name)
 
                 if not os.path.exists(save_dir_path):
                     os.makedirs(save_dir_path)
-                torch.save(model_state_dict, '{}/{}-{}-{}.pth'.format(save_dir_path, model_name, configs['data']['name'], configs['train']['seed']))
-                self.logger.log("Save model parameters to {}".format('{}/{}-{}-{}.pth'.format(save_dir_path, model_name, configs['data']['name'], configs['train']['seed'])))
+                file_stem = '{}-{}-{}'.format(model_name, dataset_name, seed)
+                if run_id:
+                    file_stem = '{}-{}'.format(file_stem, run_id)
+                save_path = '{}/{}.pth'.format(save_dir_path, file_stem)
+                torch.save(model_state_dict, save_path)
+                metadata = {
+                    'model': model_name,
+                    'dataset': dataset_name,
+                    'seed': seed,
+                    'run': configs.get('run', {}),
+                    'optimizer': configs.get('optimizer', {}),
+                    'train': configs.get('train', {}),
+                    'test': configs.get('test', {}),
+                    'best_epoch': self.best_epoch,
+                    'best_recall': self.best_recall,
+                    'validation_result': self.last_eval_result,
+                    'test_result': self.last_test_result,
+                }
+                meta_path = '{}/{}.json'.format(save_dir_path, file_stem)
+                with open(meta_path, 'w', encoding='utf-8') as f:
+                    json.dump(make_json_safe(metadata), f, indent=2, ensure_ascii=False)
+                self.logger.log("Save model parameters to {}".format(save_path))
+                self.logger.log("Save run metadata to {}".format(meta_path))
             else:
                 save_dir_path = './checkpoint/{}/tune'.format(model_name)
 
                 if not os.path.exists(save_dir_path):
                     os.makedirs(save_dir_path)
                 now_para_str = configs['tune']['now_para_str']
-                torch.save(
-                    model_state_dict, '{}/{}-{}.pth'.format(save_dir_path, model_name, now_para_str))
-                self.logger.log("Save model parameters to {}".format(
-                    '{}/{}-{}.pth'.format(save_dir_path, model_name, now_para_str)))
+                file_stem = '{}-{}'.format(model_name, now_para_str)
+                if run_id:
+                    file_stem = '{}-{}'.format(file_stem, run_id)
+                save_path = '{}/{}.pth'.format(save_dir_path, file_stem)
+                torch.save(model_state_dict, save_path)
+                meta_path = '{}/{}.json'.format(save_dir_path, file_stem)
+                with open(meta_path, 'w', encoding='utf-8') as f:
+                    json.dump(make_json_safe({
+                        'model': model_name,
+                        'dataset': dataset_name,
+                        'seed': seed,
+                        'run': configs.get('run', {}),
+                        'tune': configs.get('tune', {}),
+                        'best_epoch': self.best_epoch,
+                        'best_recall': self.best_recall,
+                        'validation_result': self.last_eval_result,
+                        'test_result': self.last_test_result,
+                    }), f, indent=2, ensure_ascii=False)
+                self.logger.log("Save model parameters to {}".format(save_path))
+                self.logger.log("Save run metadata to {}".format(meta_path))
     
     def load_model(self, model):
         if 'pretrain_path' in configs['train']:

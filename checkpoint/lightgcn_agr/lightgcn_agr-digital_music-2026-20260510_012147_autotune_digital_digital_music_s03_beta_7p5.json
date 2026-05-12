@@ -1,0 +1,63 @@
+{
+  "model": "lightgcn_agr",
+  "dataset": "digital_music",
+  "seed": 2026,
+  "run": {
+    "timestamp": "20260510_012147",
+    "tag": "autotune_digital_digital_music_s03_beta_7p5",
+    "id": "20260510_012147_autotune_digital_digital_music_s03_beta_7p5"
+  },
+  "optimizer": {
+    "name": "adam",
+    "lr": 0.001,
+    "weight_decay": 0
+  },
+  "train": {
+    "epoch": 100,
+    "batch_size": 4096,
+    "save_model": true,
+    "loss": "pairwise",
+    "test_step": 3,
+    "reproducible": true,
+    "seed": 2026,
+    "patience": 5
+  },
+  "test": {
+    "metrics": [
+      "recall",
+      "ndcg"
+    ],
+    "k": [
+      5,
+      10,
+      20
+    ],
+    "batch_size": 1024
+  },
+  "best_epoch": 84,
+  "best_recall": 0.2557601710426188,
+  "validation_result": {
+    "recall": [
+      0.11306423515210451,
+      0.17164628208818414,
+      0.2557601710426188
+    ],
+    "ndcg": [
+      0.08654970907793112,
+      0.10699849050133747,
+      0.13154691540042135
+    ]
+  },
+  "test_result": {
+    "recall": [
+      0.11601864374873605,
+      0.1750612733573681,
+      0.25606554165651196
+    ],
+    "ndcg": [
+      0.09770358109504634,
+      0.1192106186351157,
+      0.14430246118193482
+    ]
+  }
+}

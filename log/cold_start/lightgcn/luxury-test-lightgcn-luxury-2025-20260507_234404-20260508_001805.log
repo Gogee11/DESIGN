@@ -1,0 +1,25 @@
+==== Cold-start Evaluation ====
+Model      : lightgcn
+Dataset    : luxury
+Split      : test
+Checkpoint : checkpoint/lightgcn/lightgcn-luxury-2025-20260507_234404.pth
+Log        : log\cold_start\lightgcn\luxury-test-lightgcn-luxury-2025-20260507_234404-20260508_001805.log
+JSON       : log\cold_start\lightgcn\luxury-test-lightgcn-luxury-2025-20260507_234404-20260508_001805.json
+Buckets    : ['1-3', '4-7', '8-15', '16+']
+
+==== Bucket Results ====
+[1-3] users=2308 avg_train_interactions=2.23
+  recall@5: 0.2589 recall@10: 0.3137 recall@20: 0.3724
+  ndcg@5: 0.2191 ndcg@10: 0.2373 ndcg@20: 0.2528
+[4-7] users=1148 avg_train_interactions=4.70
+  recall@5: 0.4215 recall@10: 0.4469 recall@20: 0.4743
+  ndcg@5: 0.3361 ndcg@10: 0.3466 ndcg@20: 0.3553
+[8-15] users=275 avg_train_interactions=10.42
+  recall@5: 0.0961 recall@10: 0.1336 recall@20: 0.1788
+  ndcg@5: 0.0998 ndcg@10: 0.1184 ndcg@20: 0.1357
+[16+] users=81 avg_train_interactions=22.79
+  recall@5: 0.0867 recall@10: 0.1125 recall@20: 0.1553
+  ndcg@5: 0.1349 ndcg@10: 0.1219 ndcg@20: 0.1389
+[unbucketed] users=7 avg_train_interactions=0.00
+  recall@5: 0.0000 recall@10: 0.0000 recall@20: 0.0000
+  ndcg@5: 0.0000 ndcg@10: 0.0000 ndcg@20: 0.0000

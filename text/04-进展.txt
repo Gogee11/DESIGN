@@ -1,0 +1,166 @@
+# LLM-AGR 隐私研究 — 实验进展与自动化日志
+
+> 最后更新: 2026-05-10 09:10
+> 累计 ~140 个独立 cell,涵盖 17 个 phase
+> 配置: 主远程 (10587, 4 卡) + Remote A (10154, 4 卡),每卡 2 进程并行
+
+---
+
+## 0. 一句话总结
+
+LLM-AGR 默认配置在 MIA 下**反而比 LightGCN 更不安全** (AUC +3.4 pp)。元凶是 `str_weight` (结构对比损失)。设为 0 即可获得 Pareto 改进;再加 M4 对抗训练 / M1 置信度正则 / M3 嵌入压缩 任一,在不损推荐前提下进一步降 AUC 1.5-9 pp。
+
+---
+
+## 1. 已完成 Phase 总览(共 ~140 cells)
+
+| Phase | 内容 | cells | 关键产出 |
+|---|---|---|---|
+| **P1** | LGCN + AGR-default baselines | 2 | 反直觉发现起点 |
+| **P2** | (β, str_weight) 3×3 主消融 | 9 | ★ 论文 Table 2 主消融 |
+| P4 | 后置噪声 + priv hooks 系列 | ~25 | post-hoc 防御曲线 |
+| **P8** | 4 方法主对比 (M1/M2/M3/M4) | 14 + 5 (M2) | ★ 论文 Table 3 主结果 |
+| P9 | refine (长 patience) | 7 + 5 eval | M4 长 patience 收敛 |
+| **P10** | M1+M4 combo + LLM-aware τ | 10 | ★ Pareto winner s1_combo_c0.5_a0.1 |
+| P11 | friend params 反例验证 | 2 | 反例:朋友"AUC暴降"无法复现 |
+| **P12** | published-AGR baseline + 3 种子 | 7 + 7 (12b MLP) | ★ 多种子稳定性 + 论文 baseline |
+| **P13** | 跨方法 + aug_top_k + keep_rate + M4 长 patience | 14 | ★ 关键发现:aug_top_k 完全无关 |
+| P14 | emb 极端压缩 + 多种子 + M1+M3 combo | 12 | emb 压缩 Pareto 曲线 |
+| P15 | Pareto gap fill + 多种子 + M1+M3+M4 三方法 | 12 | 三方法不超加性 |
+| **P16** | emb=2/3 极端 + 多种子 + conf_target 细扫 | 12 | ★ AUC 推到 0.714 |
+| P17 | DP-SGD ref + 多种子 emb=12/6 + 后置 noise eval | 6+12 | 收尾 |
+
+---
+
+## 2. 完整 Pareto frontier(论文核心数据)
+
+### 2.1 严格 Pareto winners (双向打过 LightGCN baseline)
+
+| 配置 | 防御类型 | R@20 (multi-seed mean) | AUC (multi-seed mean) | ΔR vs LGCN | ΔAUC vs LGCN |
+|---|---|---|---|---|---|
+| **s1_combo_c0.5_a0.1** | M1+M4 combo | **0.2443±0.0002** | **0.8633±0.0006** | **+1.2%** | **−3.83 pp** |
+| **m4_adv0.05** | M4 alone | 0.2427±0.001 | 0.8726±0.005 | +0.5% | −2.9 pp |
+| **m4_adv0.1+patience=12** | M4 long patience | 0.2380 | 0.8604 | −1.4% | **−4.1 pp** |
+| m1_conf_w=0.5_t=0.7 | M1 alone | 0.2465 | 0.8870 | +2.1% | −1.5 pp |
+| **b=0, s=0** (PRF-only) | 朴素配置 | 0.2431±0.0015 | 0.8875±0.0018 | +0.7% | −1.4 pp |
+| b=1, s=0 | 朴素配置 | 0.2548 | 0.9097 | **+5.6%** | +0.8 pp |
+| m1_conf_w=0.1_t=0.7 | M1 alone | 0.2418 | 0.8805 | +0.2% | −2.1 pp |
+
+### 2.2 强隐私 (R 略低,AUC 远低)
+
+| 配置 | R@20 | AUC | 备注 |
+|---|---|---|---|
+| **emb=16 + adv=0.1** (M3+M4 cross) | 0.213±0.000 | **0.827±0.000** | M3+M4 cross 最强 |
+| emb=16 (alone) | 0.220 | 0.846 | M3 alone |
+| emb=16 + adv=0.05 | 0.218 | 0.838 | M3+M4 中等 |
+| emb=12 | 0.213±0.000 | 0.834±0.000 | M3 alone |
+
+### 2.3 极端隐私 corner
+
+| 配置 | R@20 | AUC |
+|---|---|---|
+| **emb=2** | 0.105 | **0.7143** |
+| emb=3 | 0.119 | 0.7359 |
+| emb=4 (3 seeds) | 0.134±0.000 | 0.7577±0.000 |
+| emb=6 (3 seeds) | 0.177±0.001 | 0.7872±0.002 |
+| emb=8 (3 seeds) | 0.201±0.001 | 0.8104±0.0002 |
+
+### 2.4 反例(论文 negative result / motivation)
+
+| 配置 | R@20 | AUC | 用途 |
+|---|---|---|---|
+| AGR default (β=1, str=0.05) | 0.252 | 0.934 | 论文 §4.1 "反直觉发现" |
+| Published-AGR (β=4, str=0.234) | 0.234 | 0.934 | 论文 baseline 切换 |
+| friend_params (β=5, str=0.16, kr=0.7) | 0.239 | 0.940 | 反例 — 调参不能压 AUC |
+| str_weight=0.2 系列 | <0.225 | >0.94 | 论文 §4.2 反向证明 |
+| triple combo M1+M3+M4 | 0.220 | 0.838 | 不超加性 |
+| LLM-aware conf target | 0.250 | 0.896 | 弱于 plain M1 |
+| 同学原 DP-SGD log | 0.006 | ~0.7 | 原项目失败防御 |
+
+---
+
+## 3. 五大核心 finding (论文 5 个主章节)
+
+### L1 反直觉发现:LLM-AGR 默认更不安全
+- LightGCN baseline (3 seeds): R=0.238±0.002 / AUC=0.896±0.005
+- AGR default (3 seeds): R=0.252±0.002 / AUC=0.934±0.003
+- **AGR 推荐 +1.4%,但 MIA AUC +3.8 pp** — 引入 LLM 增强反而更易被攻击
+
+### L2 机理识别:str_weight 是元凶
+- (β, str_weight) 3×3 网格:str_weight 0→0.05→0.2 → AUC 0.886→0.93→0.95
+- β 0→1→4 列内 ±0.02 (微弱影响)
+- prf_weight 一直保持 0.002 (有益但弱)
+- **aug_top_k ∈ {0, 3, 10, 20} 全部 IDENTICAL** → LLM kNN 增强图本身无关
+- → LLM-AGR framework 真正起作用的部分仅 PRF 语义蒸馏
+
+### L3 防御方法 (三类各代表论文)
+- M1 (置信度正则): MemGuard 风格 (Pereyra'17, ICLR Workshop)
+- M4 (对抗判别器): GRL minimax (Nasr-Shokri-Houmansadr CCS'18)
+- M3 (嵌入压缩): 容量限制 (经典 ML 知识)
+- **轻量 M1+M4 combo (s1_combo_c0.5_a0.1) 是论文最佳推荐**
+
+### L4 鲁棒性
+- 多种子 (seed 2025/2026/2027) variance 全部 <0.005
+- 度数均衡 MIA 下相对排序保留
+- LR vs MLP 攻击器排序一致 (MLP 略强 +1pp)
+
+### L5 极端隐私
+- emb=2 推到 AUC=0.714 (突破"度数下界"0.90)
+- 完整 Pareto 曲线 emb={2,3,4,6,8,10,12,16,20,24,32}
+
+---
+
+## 4. 仍在跑的实验 (09:10 时刻)
+
+- **P17 eval (post-hoc noise sweeps on emb=8/16 ckpts)**: 0/12 → 等待中(eval_only 顺序跑,~10min)
+- **P12b MLP attacker (CPU)**: 12/8 (含重复) → 实际所有 8 ckpt 已覆盖
+
+---
+
+## 5. 已挂的自动化触发器(用户睡觉期间 2 远程 16 槽并行)
+
+详见 design/code/scripts/launch_phase{8,9,10,...,17}.sh + /tmp/run_*_after_*.sh 触发器链。
+
+每个 phase 完成后自动启动下一 phase 的脚本均已激活完毕,Phase 17 是最后一批。
+
+---
+
+## 6. 接手后的预期工作清单
+
+### 6.1 立即可做(论文写作)
+- [ ] 运行 `python -m scripts.analyze` 生成 Pareto 散点图 (输入:results/*.jsonl)
+- [ ] 运行 `python -m scripts.write_thesis_report` 生成 Markdown 报告
+- [ ] 整理论文 5 大 finding 对应的核心表格(参考 03-new claim.md)
+- [ ] 写 Methods 章节(参考已实现的 M1/M3/M4 model 类)
+
+### 6.2 中期(可选,加强论文)
+- [ ] 第二个数据集(luxury_beauty 或 industrial_scientific)复现主结论 (~3 小时)
+- [ ] DP-SGD 完整曲线(σ ∈ {0.5, 1.0, 2.0, 5.0})作为反例对照
+- [ ] 多种子扩展 emb=16+adv=0.05 等 minor Pareto 点
+- [ ] 完整 (β, str) 5×5 网格(替代 3×3)更精细消融
+
+### 6.3 远期(论文 future work)
+- [ ] 跨数据集泛化性(2-3 个数据集)
+- [ ] LLM 嵌入模型替换实验 (BGE → MiniLM → multilingual-e5)
+- [ ] adv 判别器架构升级 (currently 3-layer MLP, 试 attention)
+- [ ] 应用到其他 LLM-augmented recommender (RLMRec, LLMRec, KAR)
+
+---
+
+## 7. 项目交接打包 (design/ 已打包好)
+
+```
+/home/ubuntu/wxy/llw/design/
+├── code/             # 全部代码(30 MB,无 raw json/log/ckpt/results)
+├── checkpoint/       # 全部 ckpt(190 MB,123 个 .pth)
+├── results/          # 全部 jsonl + utility json(<1 MB)
+├── docs/             # 论文级文档
+│   ├── 01-描述.txt   # 同学最初描述
+│   ├── 03-new claim.md  # ★ 重定型 claim + L1-L5 子论点
+│   ├── 04-进展.txt   # ★ 本文件 (实验全程日志)
+│   ├── HANDOFF.md    # ★ 交接说明
+│   └── PROJECT_README.md  # 代码结构说明
+└── logs/             # (空,如需详细 epoch 轨迹可单独从远程拉)
+```
+
+总尺寸 ~220 MB。tar.gz 压缩后约 50-80 MB。
